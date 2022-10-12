@@ -43,13 +43,14 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/open_sans"
         android:lineSpacingExtra="4dp"
         android:text="Mua sắm qua ứng dụng của cửa hàng siêu thị  trực tuyến để được giá tốt nhất."
         android:textColor="#717171"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

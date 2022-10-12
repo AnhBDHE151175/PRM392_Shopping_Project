@@ -51,11 +51,9 @@ public class ProductDetails extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent i = new Intent(ProductDetails.this, MainActivity.class);
                 startActivity(i);
                 finish();
-
             }
         });
 
