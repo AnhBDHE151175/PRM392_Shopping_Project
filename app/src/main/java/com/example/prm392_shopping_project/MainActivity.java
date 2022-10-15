@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     List<RecentlyViewed> recentlyViewedList;
 
     TextView allCategory;
-
+//huhuhuhuuhuhuh
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
