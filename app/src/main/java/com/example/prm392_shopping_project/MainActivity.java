@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.prm392_shopping_project.adapter.CategoryAdapter;
 import com.example.prm392_shopping_project.adapter.DiscountedProductAdapter;
 import com.example.prm392_shopping_project.adapter.RecentlyViewedAdapter;
+import com.example.prm392_shopping_project.database.RecentlyViewedDB;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.DiscountedProducts;
 import com.example.prm392_shopping_project.model.RecentlyViewed;
@@ -25,6 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    RecentlyViewedDB _context;
+
 
     RecyclerView discountRecyclerView, categoryRecyclerView, recentlyViewedRecycler;
     DiscountedProductAdapter discountedProductAdapter;
@@ -37,13 +41,12 @@ public class MainActivity extends AppCompatActivity {
     List<RecentlyViewed> recentlyViewedList;
 
     TextView allCategory;
-//huhuhuhuuhuhuh
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        _context = new RecentlyViewedDB(this);
         discountRecyclerView = findViewById(R.id.discountedRecycler);
         categoryRecyclerView = findViewById(R.id.categoryRecycler);
         allCategory = findViewById(R.id.allCategoryImage);
@@ -80,10 +83,20 @@ public class MainActivity extends AppCompatActivity {
 
         // adding data to model
         recentlyViewedList = new ArrayList<>();
-        recentlyViewedList.add(new RecentlyViewed("Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", "$8", "1", "KG", card4, b4));
-        recentlyViewedList.add(new RecentlyViewed("Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", "$5", "1", "KG", card3, b3));
-        recentlyViewedList.add(new RecentlyViewed("Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", "$3", "1", "KG", card2, b1));
-        recentlyViewedList.add(new RecentlyViewed("Kiwi", "Chứa đầy đủ các chất dinh dưỡng như vitamin C, vitamin K, vitamin E, folate và kali.", "$10", "1", "PC", card1, b2));
+        recentlyViewedList = _context.getAll();
+
+
+
+
+
+
+
+
+
+//        recentlyViewedList.add(new RecentlyViewed(1,"Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", "$8", "1", "KG", card4, b4));
+//        recentlyViewedList.add(new RecentlyViewed("Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", "$5", "1", "KG", card3, b3));
+//        recentlyViewedList.add(new RecentlyViewed("Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", "$3", "1", "KG", card2, b1));
+//        recentlyViewedList.add(new RecentlyViewed("Kiwi", "Chứa đầy đủ các chất dinh dưỡng như vitamin C, vitamin K, vitamin E, folate và kali.", "$10", "1", "PC", card1, b2));
 
         setDiscountedRecycler(discountedProductsList);
         setCategoryRecycler(categoryList);
