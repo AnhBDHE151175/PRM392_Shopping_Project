@@ -20,6 +20,7 @@ import com.example.prm392_shopping_project.database.RecentlyViewedDB;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.DiscountedProducts;
 import com.example.prm392_shopping_project.model.RecentlyViewed;
+
 import static com.example.prm392_shopping_project.R.drawable.*;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     List<RecentlyViewed> recentlyViewedList;
 
     TextView allCategory;
+    ImageView cart,setting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +53,27 @@ public class MainActivity extends AppCompatActivity {
         categoryRecyclerView = findViewById(R.id.categoryRecycler);
         allCategory = findViewById(R.id.allCategoryImage);
         recentlyViewedRecycler = findViewById(R.id.recently_item);
-
+        cart = findViewById(R.id.cart_main);
+        setting = findViewById(R.id.setting_main);
 
         allCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, AllCategory.class);
+                startActivity(i);
+            }
+        });
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AllCategory.class);
+                startActivity(i);
+            }
+        });
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, Login.class);
                 startActivity(i);
             }
         });
@@ -76,10 +93,6 @@ public class MainActivity extends AppCompatActivity {
         categoryList.add(new Category(2, ic_home_fish));
         categoryList.add(new Category(3, ic_home_meats));
         categoryList.add(new Category(4, ic_home_veggies));
-        categoryList.add(new Category(5, ic_home_fruits));
-        categoryList.add(new Category(6, ic_home_fish));
-        categoryList.add(new Category(7, ic_home_meats));
-        categoryList.add(new Category(8, ic_home_veggies));
 
         // adding data to model
         recentlyViewedList = new ArrayList<>();

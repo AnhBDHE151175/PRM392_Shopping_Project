@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/drawable/buy_now_bg.xml" value="0.205" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/drawable/elip_login.xml" value="0.205" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/drawable/ic_arrow_back_black_24dp.xml" value="0.205" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/drawable/ic_cart.xml" value="0.205" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/drawable/ic_home_fish.xml" value="0.1845" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout-w1240dp/activity_login.xml" value="0.17578125" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout-w936dp/activity_login.xml" value="0.15368852459016394" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_admin.xml" value="0.19322916666666667" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_all_category.xml" value="0.20606884057971014" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_cart.xml" value="0.1" />
+        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_product_details.xml" value="0.20606884057971014" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/all_category_row_items.xml" value="0.20606884057971014" />
