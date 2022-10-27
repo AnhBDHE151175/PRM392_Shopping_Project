@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +16,7 @@ import com.example.prm392_shopping_project.adapter.CategoryAdapter;
 import com.example.prm392_shopping_project.adapter.DiscountedProductAdapter;
 import com.example.prm392_shopping_project.adapter.RecentlyViewedAdapter;
 import com.example.prm392_shopping_project.database.RecentlyViewedDB;
+import com.example.prm392_shopping_project.model.Cart;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.DiscountedProducts;
 import com.example.prm392_shopping_project.model.RecentlyViewed;
@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     TextView allCategory;
     ImageView cart,setting;
 
+    public static List<Cart> cartList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         recentlyViewedRecycler = findViewById(R.id.recently_item);
         cart = findViewById(R.id.cart_main);
         setting = findViewById(R.id.setting_main);
+        if(cartList != null){
+
+        }else{
+            cartList = new ArrayList<>();
+        }
 
         allCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, AllCategory.class);
+                Intent i = new Intent(MainActivity.this, CartActivity.class);
                 startActivity(i);
             }
         });
@@ -96,6 +103,15 @@ public class MainActivity extends AppCompatActivity {
 
         // adding data to model
         recentlyViewedList = new ArrayList<>();
+//        RecentlyViewed item = new RecentlyViewed(1,"Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", 1, "1", "KG", card4, b4);
+//        RecentlyViewed item2 = new RecentlyViewed(2,"Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", 2, "1", "KG", card3, b3);
+//        RecentlyViewed item3 = new RecentlyViewed(3,"Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", 3, "1", "KG", card2, b1);
+//        RecentlyViewed item4 = new RecentlyViewed(4,"Kiwi", "Chứa đầy đủ các chất dinh dưỡng như vitamin C, vitamin K, vitamin E, folate và kali.", 4, "1", "PC", card1, b2);
+//
+//        _context.add(item);
+//        _context.add(item2);
+//        _context.add(item3);
+//        _context.add(item4);
         recentlyViewedList = _context.getAll();
 
 

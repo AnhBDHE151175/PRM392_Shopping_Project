@@ -36,9 +36,10 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
     @Override
     public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder, final int position) {
 
+        String a2 = recentlyViewedList.get(position).getPrice()+"";
         holder.name.setText(recentlyViewedList.get(position).getName());
         holder.description.setText(recentlyViewedList.get(position).getDescription());
-        holder.price.setText(recentlyViewedList.get(position).getPrice());
+        holder.price.setText(recentlyViewedList.get(position).getPrice()+" $");
         holder.qty.setText(recentlyViewedList.get(position).getQuantity());
         holder.unit.setText(recentlyViewedList.get(position).getUnit());
         holder.bg.setBackgroundResource(recentlyViewedList.get(position).getImageUrl());
@@ -50,7 +51,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
                 Intent i=new Intent(context, ProductDetails.class);
                 i.putExtra("name", recentlyViewedList.get(position).getName());
                 i.putExtra("image", recentlyViewedList.get(position).getBigimageurl());
-                i.putExtra("price",recentlyViewedList.get(position).getPrice());
+                i.putExtra("price",a2);
                 i.putExtra("desc",recentlyViewedList.get(position).getDescription());
                 i.putExtra("qty",recentlyViewedList.get(position).getQuantity());
                 i.putExtra("unit",recentlyViewedList.get(position).getUnit());

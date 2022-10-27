@@ -24,7 +24,7 @@
             android:exported="false"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".Cart"
+            android:name=".CartActivity"
             android:exported="false" />
         <activity android:name=".ProductDetails" />
         <activity android:name=".AllCategory" />

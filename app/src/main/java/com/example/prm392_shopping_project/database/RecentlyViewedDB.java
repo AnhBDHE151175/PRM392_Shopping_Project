@@ -34,7 +34,7 @@ public class RecentlyViewedDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER)", TABLE_NAME, KEY_ID, KEY_NAME, KEY_DESCRIPTION, KEY_PRICE, KEY_QUANTITY, KEY_UNIT, KEY_IMAGE_URL, KEY_BIG_IMAGE_URL);
+        String createTable = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY, %s TEXT, %s TEXT, %s INTEGER, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER)", TABLE_NAME, KEY_ID, KEY_NAME, KEY_DESCRIPTION, KEY_PRICE, KEY_QUANTITY, KEY_UNIT, KEY_IMAGE_URL, KEY_BIG_IMAGE_URL);
         db.execSQL(createTable);
     }
 
@@ -73,7 +73,7 @@ public class RecentlyViewedDB extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         while (cursor.isAfterLast() == false) {
-            RecentlyViewed recentlyViewed = new RecentlyViewed(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7));
+            RecentlyViewed recentlyViewed = new RecentlyViewed(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3), cursor.getString(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7));
             list.add(recentlyViewed);
             cursor.moveToNext();
         }
