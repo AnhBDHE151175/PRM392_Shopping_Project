@@ -9,7 +9,7 @@ public class RecentlyViewed {
     String quantity;
     String unit;
     int imageUrl;
-    int bigimageurl;
+    int bigImageUrl;
 
     public RecentlyViewed(int id,String name, String description, String price, String quantity, String unit, int
             imageUrl, int bigimageurl) {
@@ -20,7 +20,7 @@ public class RecentlyViewed {
         this.quantity = quantity;
         this.unit = unit;
         this.imageUrl = imageUrl;
-        this.bigimageurl = bigimageurl;
+        this.bigImageUrl = bigimageurl;
     }
 
     public int getId() {
@@ -31,12 +31,12 @@ public class RecentlyViewed {
         this.id = id;
     }
 
-    public int getBigimageurl() {
-        return bigimageurl;
+    public int getBigImageUrl() {
+        return bigImageUrl;
     }
 
-    public void setBigimageurl(int bigimageurl) {
-        this.bigimageurl = bigimageurl;
+    public void setBigImageUrl(int bigImageUrl) {
+        this.bigImageUrl = bigImageUrl;
     }
 
     public String getName() {

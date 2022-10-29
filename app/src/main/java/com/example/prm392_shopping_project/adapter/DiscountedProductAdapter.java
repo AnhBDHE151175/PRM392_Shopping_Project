@@ -7,21 +7,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.prm392_shopping_project.R;
-import com.example.prm392_shopping_project.model.DiscountedProducts;
+import com.example.prm392_shopping_project.model.Product;
 
 import java.util.List;
 
 public class DiscountedProductAdapter extends RecyclerView.Adapter<DiscountedProductAdapter.DiscountedProductViewHolder> {
 
     Context context;
-    List<DiscountedProducts> discountedProductsList;
+    List<Product> discountedProductsList;
 
-    public DiscountedProductAdapter(Context context, List<DiscountedProducts> discountedProductsList) {
+    public DiscountedProductAdapter(Context context, List<Product> discountedProductsList) {
         this.context = context;
         this.discountedProductsList = discountedProductsList;
     }
@@ -37,7 +36,7 @@ public class DiscountedProductAdapter extends RecyclerView.Adapter<DiscountedPro
     @Override
     public void onBindViewHolder(@NonNull DiscountedProductViewHolder holder, int position) {
 
-        holder.discountImageView.setImageResource(discountedProductsList.get(position).getImageurl());
+        holder.discountImageView.setImageResource(Integer.parseInt(discountedProductsList.get(position).getImageUrl()));
 
     }
 
