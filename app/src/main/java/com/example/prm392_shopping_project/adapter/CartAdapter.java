@@ -13,8 +13,14 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm392_shopping_project.CartActivity;
+import com.example.prm392_shopping_project.Interface.IImageOnClick;
+import com.example.prm392_shopping_project.MainActivity;
 import com.example.prm392_shopping_project.R;
 import com.example.prm392_shopping_project.model.Cart;
+import com.example.prm392_shopping_project.model.Event.EventCalculateTotalPrice;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -45,7 +51,29 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.price.setText(cartList.get(position).getPrice() + " $");
         holder.quantity.setText(cartList.get(position).getQuantity() + "");
         holder.total.setText(cartList.get(position).getQuantity() * cartList.get(position).getPrice() + " $");
+        holder.setListener(new IImageOnClick() {
+            @Override
+            public void onImageClick(View view, int pos, int value) {
+                if (value == 1) {
+                    if (cartList.get(pos).getQuantity() > 1) {
+                        cartList.get(pos).setQuantity(cartList.get(pos).getQuantity() - 1);
+                        holder.quantity.setText(cartList.get(pos).getQuantity() + "");
+                        holder.total.setText(cartList.get(pos).getQuantity() * cartList.get(pos).getPrice() + " $");
+                        EventBus.getDefault().postSticky(new EventCalculateTotalPrice());
+                    } else if (cartList.get(pos).getQuantity() == 1) {
+                        MainActivity.cartList.remove(pos);
+                    }
+                } else if (value == 2) {
+                    if (cartList.get(pos).getQuantity() < 10) {
+                        cartList.get(pos).setQuantity(cartList.get(pos).getQuantity() + 1);
+                    }
+                    holder.quantity.setText(cartList.get(pos).getQuantity() + "");
+                    holder.total.setText(cartList.get(pos).getQuantity() * cartList.get(pos).getPrice() + " $");
+                    EventBus.getDefault().postSticky(new EventCalculateTotalPrice());
+                }
 
+            }
+        });
     }
 
     @Override
@@ -54,8 +82,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView price, quantity, name, total;
+        ImageView minus, plus;
+        IImageOnClick listener;
+
+        public void setListener(IImageOnClick listener) {
+            this.listener = listener;
+        }
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,6 +98,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             quantity = itemView.findViewById(R.id.item_giohang_soluong);
             total = itemView.findViewById(R.id.item_giohang_giasp2);
             price = itemView.findViewById(R.id.item_giohang_gia);
+            minus = itemView.findViewById(R.id.item_giohang_tru);
+            plus = itemView.findViewById(R.id.item_giohang_cong);
+
+            plus.setOnClickListener(this);
+            minus.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (view == minus) {
+                listener.onImageClick(view, getAdapterPosition(), 1);
+            } else if (view == plus) {
+                listener.onImageClick(view, getAdapterPosition(), 2);
+            }
         }
     }
 }

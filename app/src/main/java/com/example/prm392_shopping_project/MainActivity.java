@@ -20,6 +20,7 @@ import com.example.prm392_shopping_project.model.Cart;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.DiscountedProducts;
 import com.example.prm392_shopping_project.model.RecentlyViewed;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import static com.example.prm392_shopping_project.R.drawable.*;
 
@@ -42,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     List<RecentlyViewed> recentlyViewedList;
 
     TextView allCategory;
-    ImageView cart,setting;
+    ImageView cart, setting;
+    NotificationBadge bage;
 
     public static List<Cart> cartList;
 
@@ -57,10 +59,14 @@ public class MainActivity extends AppCompatActivity {
         recentlyViewedRecycler = findViewById(R.id.recently_item);
         cart = findViewById(R.id.cart_main);
         setting = findViewById(R.id.setting_main);
-        if(cartList != null){
+        bage = findViewById(R.id.badge_main);
+        if (cartList != null) {
+//            bage.setText(String.valueOf(cartList.size()));
 
-        }else{
+        } else {
             cartList = new ArrayList<>();
+//            bage.setText("0");
+
         }
 
         allCategory.setOnClickListener(new View.OnClickListener() {
@@ -115,13 +121,6 @@ public class MainActivity extends AppCompatActivity {
         recentlyViewedList = _context.getAll();
 
 
-
-
-
-
-
-
-
 //        recentlyViewedList.add(new RecentlyViewed(1,"Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", "$8", "1", "KG", card4, b4));
 //        recentlyViewedList.add(new RecentlyViewed("Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", "$5", "1", "KG", card3, b3));
 //        recentlyViewedList.add(new RecentlyViewed("Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", "$3", "1", "KG", card2, b1));
@@ -136,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
     private void setDiscountedRecycler(List<DiscountedProducts> dataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         discountRecyclerView.setLayoutManager(layoutManager);
-        discountedProductAdapter = new DiscountedProductAdapter(this,dataList);
+        discountedProductAdapter = new DiscountedProductAdapter(this, dataList);
         discountRecyclerView.setAdapter(discountedProductAdapter);
     }
 
@@ -144,14 +143,14 @@ public class MainActivity extends AppCompatActivity {
     private void setCategoryRecycler(List<Category> categoryDataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(layoutManager);
-        categoryAdapter = new CategoryAdapter(this,categoryDataList);
+        categoryAdapter = new CategoryAdapter(this, categoryDataList);
         categoryRecyclerView.setAdapter(categoryAdapter);
     }
 
     private void setRecentlyViewedRecycler(List<RecentlyViewed> recentlyViewedDataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recentlyViewedRecycler.setLayoutManager(layoutManager);
-        recentlyViewedAdapter = new RecentlyViewedAdapter(this,recentlyViewedDataList);
+        recentlyViewedAdapter = new RecentlyViewedAdapter(this, recentlyViewedDataList);
         recentlyViewedRecycler.setAdapter(recentlyViewedAdapter);
     }
 }

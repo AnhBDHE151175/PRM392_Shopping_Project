@@ -9,14 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.prm392_shopping_project.model.Cart;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 public class ProductDetails extends AppCompatActivity {
 
-    ImageView img, back, btn_cart;
+    ImageView img, back, btn_cart,cart;
     TextView proName, proPrice, proDesc, proQty, proUnit;
 
     String name, price, desc, qty, unit;
     int image;
+    NotificationBadge bage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,8 @@ public class ProductDetails extends AppCompatActivity {
         proQty = findViewById(R.id.qty);
         proUnit = findViewById(R.id.unit);
         btn_cart = findViewById(R.id.btn_cart);
+        cart = findViewById(R.id.cart);
+        bage = findViewById(R.id.badge);
 
 
         proName.setText(name);
@@ -50,8 +54,17 @@ public class ProductDetails extends AppCompatActivity {
 
 
         img.setImageResource(image);
+        if (MainActivity.cartList != null) {
+            bage.setText(String.valueOf(MainActivity.cartList.size()));
+        }
 
-
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ProductDetails.this, CartActivity.class);
+                startActivity(i);
+            }
+        });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +82,7 @@ public class ProductDetails extends AppCompatActivity {
                     for (int i = 0; i < MainActivity.cartList.size(); i++) {
                         if (MainActivity.cartList.get(i).getName().equals(productAdd.getName())) {
                             MainActivity.cartList.get(i).setQuantity(MainActivity.cartList.get(i).getQuantity() + 1);
-                        flag = true;
+                            flag = true;
                         }
                     }
                     if (!flag) {
@@ -78,10 +91,9 @@ public class ProductDetails extends AppCompatActivity {
                 } else {
                     MainActivity.cartList.add(new Cart(name, Integer.parseInt(price), unit, 1));
                 }
+                bage.setText(String.valueOf(MainActivity.cartList.size()));
                 Intent i = new Intent(ProductDetails.this, CartActivity.class);
                 startActivity(i);
-//                }
-
             }
         });
 
