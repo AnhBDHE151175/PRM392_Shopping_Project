@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +25,7 @@ public class CartActivity extends AppCompatActivity {
     CartAdapter cartAdapter;
     RecyclerView rcCart;
     TextView total_price;
+    Button btnBuy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,20 +43,20 @@ public class CartActivity extends AppCompatActivity {
             findViewById(R.id.cart_empty).setVisibility(View.VISIBLE);
         }
 
-//        minus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(getApplicationContext(),MainActivity.class);
-//                startActivity(i);
-//            }
-//        });
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),BuyConfirm.class);
+                startActivity(i);
+            }
+        });
 
     }
 
     public void init() {
         rcCart = findViewById(R.id.cart_rv);
         total_price = findViewById(R.id.total_price);
-
+        btnBuy = findViewById(R.id.btnmuahang);
 
     }
 
