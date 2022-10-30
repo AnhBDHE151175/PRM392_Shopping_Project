@@ -19,6 +19,7 @@ import com.example.prm392_shopping_project.adapter.CategoryAdapter;
 import com.example.prm392_shopping_project.adapter.DiscountedProductAdapter;
 import com.example.prm392_shopping_project.adapter.RecentlyViewedAdapter;
 import com.example.prm392_shopping_project.database.AppDatabaseContext;
+import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.database.ProductDB;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.Product;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     AppDatabaseContext _context;
     ProductDB productDB = new ProductDB(this);
+    CategoryDB categoryDB = new CategoryDB(this);
     RecyclerView discountRecyclerView, categoryRecyclerView, recentlyViewedRecycler;
     DiscountedProductAdapter discountedProductAdapter;
     List<Product> discountedProductsList;
@@ -81,25 +83,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         // seedingData
-        Toast.makeText(this, productDB.seedingData() + "", Toast.LENGTH_SHORT).show();
+        List<Category> allCategory = categoryDB.getAll();
+        if (allCategory.size() == 0){
+            long count = categoryDB.seedingData();
+        }
 
+        List<Product> allProduct = productDB.getAll();
+        if(allProduct.size() == 0){
+            productDB.seedingData();
+        }
 
         // adding data to model
-        discountedProductsList = new ArrayList<>();
+        discountedProductsList = productDB.getAll();
 
         // adding data to model
-        categoryList = new ArrayList<>();
-        categoryList.add(new Category(1, "Fruits", ic_home_fruits));
-        categoryList.add(new Category(2, "Fish", ic_home_fish));
-        categoryList.add(new Category(3, "Meats", ic_home_meats));
-        categoryList.add(new Category(4, "Veggies", ic_home_veggies));
+        categoryList = categoryDB.getAll();
 
         // adding data to model
         recentlyViewedList = productDB.getAll();
-        List<Product> test = productDB.getAll();
-        for(Product product : productDB.getAll()){
-            Toast.makeText(this, product.toString(), Toast.LENGTH_SHORT).show();
-        }
 
         setDiscountedRecycler(discountedProductsList);
         setCategoryRecycler(categoryList);

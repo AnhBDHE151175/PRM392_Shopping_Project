@@ -36,7 +36,7 @@ public class DiscountedProductAdapter extends RecyclerView.Adapter<DiscountedPro
     @Override
     public void onBindViewHolder(@NonNull DiscountedProductViewHolder holder, int position) {
 
-        holder.discountImageView.setImageResource(Integer.parseInt(discountedProductsList.get(position).getImageUrl()));
+        holder.discountImageView.setImageResource(Integer.parseInt(discountedProductsList.get(position).getBigImageUrl()));
 
     }
 

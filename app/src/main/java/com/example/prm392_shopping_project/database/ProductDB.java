@@ -66,8 +66,7 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         values.put("discount", product.getDiscount());
         values.put("imageUrl", product.getImageUrl());
         values.put("bigImageUrl", product.getBigImageUrl());
-        long count = db.insert(PRODUCT_TABLE, null, values);
-        db.close();
+        long count = db.update(PRODUCT_TABLE, values, "id=?", new String[]{String.valueOf(product.getId())});
         return count;
     }
 
@@ -75,7 +74,6 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
     public long delete(int id) {
         SQLiteDatabase db = super.getWritableDatabase();
         long count = db.delete(PRODUCT_TABLE, "id =?", new String[]{String.valueOf(id)});
-
         return count;
     }
 
@@ -114,7 +112,6 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-        cursor.moveToFirst();
 
         while (cursor.moveToNext()) {
             Product product = new Product(
@@ -128,11 +125,11 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
                     cursor.getString(7),
                     cursor.getString(8));
             list.add(product);
-            cursor.moveToNext();
         }
         return list;
     }
 
+    @Override
     public long seedingData() {
         long count = 0;
         List<Product> list = new ArrayList<>();
@@ -144,7 +141,6 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         for (int i = 0; i < list.size(); i++) {
             Product product = list.get(i);
             ContentValues values = new ContentValues();
-//            values.put("id", product.getId());
             values.put("name", product.getName());
             values.put("description", product.getDescription());
             values.put("price", product.getPrice());

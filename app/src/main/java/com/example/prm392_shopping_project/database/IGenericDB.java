@@ -11,4 +11,5 @@ public interface IGenericDB<T> {
     T getById(int id);
     List<T> getAll();
 
+    long seedingData();
 }

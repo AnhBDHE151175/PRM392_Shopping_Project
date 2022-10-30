@@ -36,7 +36,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
 
-        holder.categoryImage.setImageResource(categoryList.get(position).getImageUrl());
+        holder.categoryImage.setImageResource(Integer.parseInt(categoryList.get(position).getImageUrl()));
 
     }
 
