@@ -5,14 +5,13 @@ public class RecentlyViewed {
     int id;
     String name;
     String description;
-    String price;
+    int price;
     String quantity;
     String unit;
     int imageUrl;
     int bigImageUrl;
 
-    public RecentlyViewed(int id,String name, String description, String price, String quantity, String unit, int
-            imageUrl, int bigimageurl) {
+    public RecentlyViewed(int id, String name, String description, int price, String quantity, String unit, int imageUrl, int bigimageurl) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -55,11 +54,11 @@ public class RecentlyViewed {
         this.description = description;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

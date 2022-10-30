@@ -31,6 +31,10 @@ android {
 }
 
 dependencies {
+    //evenbus
+    implementation("org.greenrobot:eventbus:3.3.1")
+    //notify
+    implementation 'com.nex3z:notification-badge:1.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'

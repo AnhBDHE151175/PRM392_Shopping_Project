@@ -39,7 +39,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
         Product product = recentlyViewedList.get(position);
         holder.name.setText(product.getName());
         holder.description.setText(product.getDescription());
-        holder.price.setText(String.valueOf(product.getPrice()));
+        holder.price.setText(product.getPrice() + "$");
         holder.qty.setText(String.valueOf(product.getQuantity()));
         holder.discount.setText(String.valueOf(product.getDiscount()));
         holder.bg.setBackgroundResource(Integer.parseInt(recentlyViewedList.get(position).getImageUrl()));
@@ -50,8 +50,8 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
 
                 Intent i=new Intent(context, ProductDetails.class);
                 i.putExtra("name", recentlyViewedList.get(position).getName());
-                i.putExtra("image", recentlyViewedList.get(position).getBigImageUrl());
-                i.putExtra("price",recentlyViewedList.get(position).getPrice());
+                i.putExtra("image", recentlyViewedList.get(position).getBigimageurl());
+                i.putExtra("price",recentlyViewedList.get(position).getPrice()+"");
                 i.putExtra("desc",recentlyViewedList.get(position).getDescription());
                 i.putExtra("qty",recentlyViewedList.get(position).getQuantity());
                 i.putExtra("discount",recentlyViewedList.get(position).getDiscount());

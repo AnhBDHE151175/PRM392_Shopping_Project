@@ -3,14 +3,12 @@ package com.example.prm392_shopping_project;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +24,6 @@ import com.example.prm392_shopping_project.model.Product;
 import com.example.prm392_shopping_project.model.RecentlyViewed;
 
 import static com.example.prm392_shopping_project.R.drawable.*;
-import static com.example.prm392_shopping_project.database.DatabaseConfig.PRODUCT_TABLE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
     List<Product> recentlyViewedList;
 
     TextView allCategory;
-    ImageView cart,setting;
+    ImageView cart, setting;
+    NotificationBadge bage;
+
+    public static List<Cart> cartList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
         recentlyViewedRecycler = findViewById(R.id.recently_item);
         cart = findViewById(R.id.cart_main);
         setting = findViewById(R.id.setting_main);
+        bage = findViewById(R.id.badge_main);
+        if (cartList != null) {
+//            bage.setText(String.valueOf(cartList.size()));
+
+        } else {
+            cartList = new ArrayList<>();
+//            bage.setText("0");
+
+        }
 
         allCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, AllCategory.class);
+                Intent i = new Intent(MainActivity.this, CartActivity.class);
                 startActivity(i);
             }
         });
@@ -111,14 +120,15 @@ public class MainActivity extends AppCompatActivity {
     private void setDiscountedRecycler(List<Product> dataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         discountRecyclerView.setLayoutManager(layoutManager);
-        discountedProductAdapter = new DiscountedProductAdapter(this,dataList);
+        discountedProductAdapter = new DiscountedProductAdapter(this, dataList);
         discountRecyclerView.setAdapter(discountedProductAdapter);
     }
+
 
     private void setCategoryRecycler(List<Category> categoryDataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         categoryRecyclerView.setLayoutManager(layoutManager);
-        categoryAdapter = new CategoryAdapter(this,categoryDataList);
+        categoryAdapter = new CategoryAdapter(this, categoryDataList);
         categoryRecyclerView.setAdapter(categoryAdapter);
     }
 
