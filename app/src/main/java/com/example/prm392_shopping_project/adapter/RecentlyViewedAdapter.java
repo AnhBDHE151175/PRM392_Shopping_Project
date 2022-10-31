@@ -39,8 +39,8 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
         Product product = recentlyViewedList.get(position);
         holder.name.setText(product.getName());
         holder.description.setText(product.getDescription());
-        holder.price.setText(product.getPrice() + "$");
-        holder.qty.setText(String.valueOf(product.getQuantity()));
+        holder.price.setText(product.getPrice() + "$/");
+        holder.unit.setText(product.getUnit());
         holder.discount.setText(String.valueOf(product.getDiscount()));
         holder.bg.setBackgroundResource(Integer.parseInt(recentlyViewedList.get(position).getImageUrl()));
 
@@ -50,14 +50,12 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
 
                 Intent i=new Intent(context, ProductDetails.class);
                 i.putExtra("name", recentlyViewedList.get(position).getName());
-                i.putExtra("image", recentlyViewedList.get(position).getBigimageurl());
-                i.putExtra("price",recentlyViewedList.get(position).getPrice()+"");
+                i.putExtra("image", recentlyViewedList.get(position).getBigImageUrl());
+                i.putExtra("price",recentlyViewedList.get(position).getPrice());
                 i.putExtra("desc",recentlyViewedList.get(position).getDescription());
-                i.putExtra("qty",recentlyViewedList.get(position).getQuantity());
+                i.putExtra("unit",recentlyViewedList.get(position).getUnit());
                 i.putExtra("discount",recentlyViewedList.get(position).getDiscount());
-
                 context.startActivity(i);
-
             }
         });
 
@@ -70,7 +68,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
 
     public static class RecentlyViewedViewHolder extends RecyclerView.ViewHolder{
 
-        TextView name, description, price, qty, discount;
+        TextView name, description, price, discount, unit;
         ConstraintLayout bg;
 
         public RecentlyViewedViewHolder(@NonNull View itemView) {
@@ -78,8 +76,8 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
 
             name = itemView.findViewById(R.id.product_name);
             description = itemView.findViewById(R.id.description);
+            unit = itemView.findViewById(R.id.unit);
             price = itemView.findViewById(R.id.price);
-            qty = itemView.findViewById(R.id.qty);
             discount = itemView.findViewById(R.id.discount);
             bg = itemView.findViewById(R.id.recently_layout);
 

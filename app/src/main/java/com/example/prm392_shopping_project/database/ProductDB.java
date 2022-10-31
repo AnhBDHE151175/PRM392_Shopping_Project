@@ -91,10 +91,11 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
                         cursor.getString(2),
                         cursor.getInt(3),
                         cursor.getInt(4),
-                        cursor.getInt(5),
+                        cursor.getString(5),
                         cursor.getInt(6),
-                        cursor.getString(7),
-                        cursor.getString(8));
+                        cursor.getInt(7),
+                        cursor.getString(8),
+                        cursor.getString(9));
                 return product;
             }
             catch (Exception ex){
@@ -120,10 +121,11 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
                     cursor.getString(2),
                     cursor.getInt(3),
                     cursor.getInt(4),
-                    cursor.getInt(5),
+                    cursor.getString(5),
                     cursor.getInt(6),
-                    cursor.getString(7),
-                    cursor.getString(8));
+                    cursor.getInt(7),
+                    cursor.getString(8),
+                    cursor.getString(9));
             list.add(product);
         }
         return list;
@@ -133,10 +135,10 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
     public long seedingData() {
         long count = 0;
         List<Product> list = new ArrayList<>();
-        list.add(new Product("Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", 10, 100,1, 10, String.valueOf(card4), String.valueOf(b4)));
-        list.add(new Product("Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", 100, 100,2, 30, String.valueOf(card3), String.valueOf(b3)));
-        list.add(new Product("Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", 100, 100,3, 20, String.valueOf(card2), String.valueOf(b2)));
-        list.add(new Product("Kiwi", "Chứa đầy đủ các chất dinh dưỡng như vitamin C, vitamin K, vitamin E, folate và kali.", 100, 100,4, 10, String.valueOf(card1), String.valueOf(b1)));
+        list.add(new Product("Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", 10.5, 100, "1kg", 1, 10, String.valueOf(card4), String.valueOf(b4)));
+        list.add(new Product("Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", 10, 100,"1kg",2, 30, String.valueOf(card3), String.valueOf(b3)));
+        list.add(new Product("Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", 10, 100,"1kg",3, 20, String.valueOf(card2), String.valueOf(b2)));
+        list.add(new Product("Kiwi", "Chứa đầy đủ các chất dinh dưỡng như vitamin C, vitamin K, vitamin E, folate và kali.", 10, 100,"1kg",4, 10, String.valueOf(card1), String.valueOf(b1)));
         SQLiteDatabase db = super.getWritableDatabase();
         for (int i = 0; i < list.size(); i++) {
             Product product = list.get(i);
@@ -145,6 +147,7 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
             values.put("description", product.getDescription());
             values.put("price", product.getPrice());
             values.put("quantity", product.getQuantity());
+            values.put("unit", product.getUnit());
             values.put("category_id", product.getCategoryId());
             values.put("discount", product.getDiscount());
             values.put("imageUrl", product.getImageUrl());

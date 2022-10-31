@@ -43,35 +43,40 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/open_sans_bold"
-        android:text="TextView"
+        android:text="Price"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <TextView
-        android:id="@+id/qty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:id="@+id/unit"
+        android:layout_width="34dp"
+        android:layout_height="17dp"
+        android:layout_marginEnd="28dp"
         android:fontFamily="@font/open_sans_light"
-        android:text="qty"
+        android:text="unit"
         android:textColor="#FFFFFF"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price" />
+        android:textFontWeight="30"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toEndOf="@+id/price"
+        app:layout_constraintTop_toBottomOf="@+id/description"
+        app:layout_constraintVertical_bias="0.045" />
 
     <TextView
         android:id="@+id/discount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
+        android:layout_width="48dp"
+        android:layout_height="14dp"
         android:fontFamily="@font/open_sans_light"
         android:text="discount"
         android:textColor="#FFFFFF"
         android:textSize="10sp"
-        app:layout_constraintBottom_toBottomOf="@+id/qty"
-        app:layout_constraintStart_toEndOf="@+id/qty"
-        app:layout_constraintTop_toTopOf="@+id/qty" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.061"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"

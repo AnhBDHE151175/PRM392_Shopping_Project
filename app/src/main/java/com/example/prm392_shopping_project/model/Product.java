@@ -6,6 +6,7 @@ public class Product {
     private String description;
     private double price;
     private int quantity;
+    private String unit;
     private int discount;
     private String imageUrl;
     private String bigImageUrl;
@@ -15,7 +16,7 @@ public class Product {
 
     public Product() {
     }
-    public Product(String name, String description, double price, int quantity,int categoryId, int discount, String
+    public Product(String name, String description, double price, int quantity, String unit,int categoryId, int discount, String
             imageUrl, String bigImageUrl) {
         this.name = name;
         this.description = description;
@@ -25,9 +26,10 @@ public class Product {
         this.imageUrl = imageUrl;
         this.bigImageUrl = bigImageUrl;
         this.categoryId = categoryId;
+        this.unit = unit;
     }
 
-    public Product(int id,String name, String description, double price, int quantity,int categoryId, int discount, String
+    public Product(int id,String name, String description, double price, int quantity,String unit, int categoryId, int discount, String
             imageUrl, String bigImageUrl) {
         this.id = id;
         this.name = name;
@@ -38,6 +40,7 @@ public class Product {
         this.imageUrl = imageUrl;
         this.bigImageUrl = bigImageUrl;
         this.categoryId = categoryId;
+        this.unit = unit;
     }
 
     public int getId() {
@@ -104,6 +107,12 @@ public class Product {
         this.bigImageUrl = bigImageUrl;
     }
 
+    public String getUnit() {
+        return unit;
+    }
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
     public int getCategoryId() {
         return categoryId;
     }

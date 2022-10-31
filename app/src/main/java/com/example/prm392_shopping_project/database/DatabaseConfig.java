@@ -43,6 +43,7 @@ public class DatabaseConfig {
             "   [description] text(2147483647) COLLATE NOCASE,\n" +
             "   [price] float NOT NULL,\n" +
             "   [quantity] int NOT NULL,\n" +
+            "   [unit] nvarchar(50) NOT NULL,\n" +
             "   [category_id] int NOT NULL,\n" +
             "   [discount] int,\n" +
             "   [imageUrl] nvarchar(50) NOT NULL COLLATE NOCASE,\n" +

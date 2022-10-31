@@ -1,5 +1,10 @@
 package com.example.prm392_shopping_project;
 
+import static com.example.prm392_shopping_project.R.drawable.ic_home_fish;
+import static com.example.prm392_shopping_project.R.drawable.ic_home_fruits;
+import static com.example.prm392_shopping_project.R.drawable.ic_home_meats;
+import static com.example.prm392_shopping_project.R.drawable.ic_home_veggies;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -19,11 +24,11 @@ import com.example.prm392_shopping_project.adapter.RecentlyViewedAdapter;
 import com.example.prm392_shopping_project.database.AppDatabaseContext;
 import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.database.ProductDB;
+import com.example.prm392_shopping_project.model.Cart;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.Product;
-import com.example.prm392_shopping_project.model.RecentlyViewed;
+import com.nex3z.notificationbadge.NotificationBadge;
 
-import static com.example.prm392_shopping_project.R.drawable.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,8 +111,12 @@ public class MainActivity extends AppCompatActivity {
         discountedProductsList = productDB.getAll();
 
         // adding data to model
-        categoryList = categoryDB.getAll();
-
+//        categoryList = categoryDB.getAll();
+        categoryList = new ArrayList<Category>();
+        categoryList.add(new Category(1,"Fruits", String.valueOf(ic_home_fruits)));
+        categoryList.add(new Category(2,"Fish", String.valueOf(ic_home_fish)));
+        categoryList.add(new Category( 3,"Meats", String.valueOf(ic_home_meats)));
+        categoryList.add(new Category( 4,"Veggies", String.valueOf(ic_home_veggies)));
         // adding data to model
         recentlyViewedList = productDB.getAll();
 

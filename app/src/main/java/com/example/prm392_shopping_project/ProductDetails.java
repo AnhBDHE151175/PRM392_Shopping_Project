@@ -89,7 +89,7 @@ public class ProductDetails extends AppCompatActivity {
                         MainActivity.cartList.add(productAdd);
                     }
                 } else {
-                    MainActivity.cartList.add(new Cart(name, Integer.parseInt(price), unit, 1));
+                    MainActivity.cartList.add(new Cart(name, 100, "1kg", 1));
                 }
                 bage.setText(String.valueOf(MainActivity.cartList.size()));
                 Intent i = new Intent(ProductDetails.this, CartActivity.class);
