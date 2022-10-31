@@ -51,7 +51,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
                 Intent i=new Intent(context, ProductDetails.class);
                 i.putExtra("name", recentlyViewedList.get(position).getName());
                 i.putExtra("image", recentlyViewedList.get(position).getBigImageUrl());
-                i.putExtra("price",recentlyViewedList.get(position).getPrice());
+                i.putExtra("price",recentlyViewedList.get(position).getPrice()+"");
                 i.putExtra("desc",recentlyViewedList.get(position).getDescription());
                 i.putExtra("unit",recentlyViewedList.get(position).getUnit());
                 i.putExtra("discount",recentlyViewedList.get(position).getDiscount());

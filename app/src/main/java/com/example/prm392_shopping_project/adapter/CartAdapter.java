@@ -60,16 +60,18 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                         holder.quantity.setText(cartList.get(pos).getQuantity() + "");
                         holder.total.setText(cartList.get(pos).getQuantity() * cartList.get(pos).getPrice() + " $");
                         EventBus.getDefault().postSticky(new EventCalculateTotalPrice());
+
                     } else if (cartList.get(pos).getQuantity() == 1) {
                         MainActivity.cartList.remove(pos);
                     }
                 } else if (value == 2) {
                     if (cartList.get(pos).getQuantity() < 10) {
                         cartList.get(pos).setQuantity(cartList.get(pos).getQuantity() + 1);
+                        holder.quantity.setText(cartList.get(pos).getQuantity() + "");
+                        holder.total.setText(cartList.get(pos).getQuantity() * cartList.get(pos).getPrice() + " $");
+                        EventBus.getDefault().postSticky(new EventCalculateTotalPrice());
                     }
-                    holder.quantity.setText(cartList.get(pos).getQuantity() + "");
-                    holder.total.setText(cartList.get(pos).getQuantity() * cartList.get(pos).getPrice() + " $");
-                    EventBus.getDefault().postSticky(new EventCalculateTotalPrice());
+
                 }
 
             }

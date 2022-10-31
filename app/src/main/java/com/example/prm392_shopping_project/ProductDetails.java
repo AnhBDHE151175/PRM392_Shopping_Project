@@ -34,16 +34,7 @@ public class ProductDetails extends AppCompatActivity {
         qty = i.getStringExtra("qty");
         unit = i.getStringExtra("unit");
 
-        proName = findViewById(R.id.productName);
-        proDesc = findViewById(R.id.prodDesc);
-        proPrice = findViewById(R.id.prodPrice);
-        img = findViewById(R.id.big_image);
-        back = findViewById(R.id.back2);
-        proQty = findViewById(R.id.qty);
-        proUnit = findViewById(R.id.unit);
-        btn_cart = findViewById(R.id.btn_cart);
-        cart = findViewById(R.id.cart);
-        bage = findViewById(R.id.badge);
+        init();
 
 
         proName.setText(name);
@@ -77,7 +68,7 @@ public class ProductDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (MainActivity.cartList.size() > 0) {
-                    Cart productAdd = new Cart(name, Integer.parseInt(price), unit, 1);
+                    Cart productAdd = new Cart(name, Double.parseDouble(price), unit, 1);
                     boolean flag = false;
                     for (int i = 0; i < MainActivity.cartList.size(); i++) {
                         if (MainActivity.cartList.get(i).getName().equals(productAdd.getName())) {
@@ -89,13 +80,24 @@ public class ProductDetails extends AppCompatActivity {
                         MainActivity.cartList.add(productAdd);
                     }
                 } else {
-                    MainActivity.cartList.add(new Cart(name, 100, "1kg", 1));
+                    MainActivity.cartList.add(new Cart(name, Double.parseDouble(price), unit, 1));
                 }
                 bage.setText(String.valueOf(MainActivity.cartList.size()));
                 Intent i = new Intent(ProductDetails.this, CartActivity.class);
                 startActivity(i);
             }
         });
-
+    }
+    public void init(){
+        proName = findViewById(R.id.productName);
+        proDesc = findViewById(R.id.prodDesc);
+        proPrice = findViewById(R.id.prodPrice);
+        img = findViewById(R.id.big_image);
+        back = findViewById(R.id.back2);
+        proQty = findViewById(R.id.qty);
+        proUnit = findViewById(R.id.unit);
+        btn_cart = findViewById(R.id.btn_cart);
+        cart = findViewById(R.id.cart);
+        bage = findViewById(R.id.badge);
     }
 }
