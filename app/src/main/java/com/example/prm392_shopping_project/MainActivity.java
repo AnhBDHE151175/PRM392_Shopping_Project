@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.prm392_shopping_project.adapter.CategoryAdapter;
 import com.example.prm392_shopping_project.adapter.DiscountedProductAdapter;
 import com.example.prm392_shopping_project.adapter.RecentlyViewedAdapter;
+import com.example.prm392_shopping_project.database.AccountDB;
 import com.example.prm392_shopping_project.database.AppDatabaseContext;
 import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.database.ProductDB;
@@ -36,6 +37,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     AppDatabaseContext _context;
+    AccountDB accountDB = new AccountDB(this);
     ProductDB productDB = new ProductDB(this);
     CategoryDB categoryDB = new CategoryDB(this);
     RecyclerView discountRecyclerView, categoryRecyclerView, recentlyViewedRecycler;
@@ -106,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
         if(allProduct.size() == 0){
             productDB.seedingData();
         }
+
+        accountDB.seedingData();
 
         // adding data to model
         discountedProductsList = productDB.getAll();
