@@ -36,7 +36,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
 
-        holder.categoryImage.setImageResource(categoryList.get(position).getImageurl());
+        Category category = categoryList.get(position);
+        holder.categoryImage.setImageResource(Integer.parseInt(category.getImageUrl()));
 
     }
 
@@ -58,5 +59,3 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
 
 }
-
-// lets import all the category images

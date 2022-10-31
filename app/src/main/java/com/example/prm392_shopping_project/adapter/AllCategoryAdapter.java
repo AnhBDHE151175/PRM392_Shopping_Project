@@ -10,15 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prm392_shopping_project.R;
-import com.example.prm392_shopping_project.model.AllCategoryModel;
+import com.example.prm392_shopping_project.model.Category;
+
 import java.util.List;
 
 public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.AllCategoryViewHolder> {
 
     Context context;
-    List<AllCategoryModel> categoryList;
+    List<Category> categoryList;
 
-    public AllCategoryAdapter(Context context, List<AllCategoryModel> categoryList) {
+    public AllCategoryAdapter(Context context, List<Category> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
     }
@@ -35,7 +36,7 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
     @Override
     public void onBindViewHolder(@NonNull AllCategoryViewHolder holder, int position) {
 
-        holder.categoryImage.setImageResource(categoryList.get(position).getImageurl());
+        holder.categoryImage.setImageResource(Integer.parseInt(categoryList.get(position).getImageUrl()));
 
     }
 

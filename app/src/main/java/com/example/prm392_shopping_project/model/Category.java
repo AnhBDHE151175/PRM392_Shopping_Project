@@ -1,30 +1,53 @@
 package com.example.prm392_shopping_project.model;
 
+import java.util.List;
+
 public class Category {
 
+    private int id;
+    private String name;
+    private String imageUrl;
 
-    Integer id;
-    Integer imageurl;
+    private List<Product> products;
+    private Category(){
 
-    public Category(Integer id, Integer imageurl) {
+    }
+    public Category(String name, String imageUrl) {
+        this.name = name;
+        this.imageUrl = imageUrl;
+    }
+    public Category(int id, String name, String imageUrl) {
         this.id = id;
-        this.imageurl = imageurl;
+        this.name = name;
+        this.imageUrl = imageUrl;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Integer getImageurl() {
-        return imageurl;
+    public String getName() {
+        return name;
     }
 
-    public void setImageurl(Integer imageurl) {
-        this.imageurl = imageurl;
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+    public void setProducts(List<Product> products) {}
 }

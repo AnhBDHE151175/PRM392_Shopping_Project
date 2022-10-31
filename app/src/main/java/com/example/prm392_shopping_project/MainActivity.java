@@ -1,9 +1,15 @@
 package com.example.prm392_shopping_project;
 
+import static com.example.prm392_shopping_project.R.drawable.ic_home_fish;
+import static com.example.prm392_shopping_project.R.drawable.ic_home_fruits;
+import static com.example.prm392_shopping_project.R.drawable.ic_home_meats;
+import static com.example.prm392_shopping_project.R.drawable.ic_home_veggies;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,32 +21,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.prm392_shopping_project.adapter.CategoryAdapter;
 import com.example.prm392_shopping_project.adapter.DiscountedProductAdapter;
 import com.example.prm392_shopping_project.adapter.RecentlyViewedAdapter;
-import com.example.prm392_shopping_project.database.RecentlyViewedDB;
+import com.example.prm392_shopping_project.database.AppDatabaseContext;
+import com.example.prm392_shopping_project.database.CategoryDB;
+import com.example.prm392_shopping_project.database.ProductDB;
 import com.example.prm392_shopping_project.model.Cart;
 import com.example.prm392_shopping_project.model.Category;
-import com.example.prm392_shopping_project.model.DiscountedProducts;
-import com.example.prm392_shopping_project.model.RecentlyViewed;
+import com.example.prm392_shopping_project.model.Product;
 import com.nex3z.notificationbadge.NotificationBadge;
 
-import static com.example.prm392_shopping_project.R.drawable.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    RecentlyViewedDB _context;
-
-
+    AppDatabaseContext _context;
+    ProductDB productDB = new ProductDB(this);
+    CategoryDB categoryDB = new CategoryDB(this);
     RecyclerView discountRecyclerView, categoryRecyclerView, recentlyViewedRecycler;
     DiscountedProductAdapter discountedProductAdapter;
-    List<DiscountedProducts> discountedProductsList;
+    List<Product> discountedProductsList;
 
     CategoryAdapter categoryAdapter;
     List<Category> categoryList;
 
     RecentlyViewedAdapter recentlyViewedAdapter;
-    List<RecentlyViewed> recentlyViewedList;
+    List<Product> recentlyViewedList;
 
     TextView allCategory;
     ImageView cart, setting;
@@ -52,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        _context = new RecentlyViewedDB(this);
+        _context = new AppDatabaseContext(this);
         discountRecyclerView = findViewById(R.id.discountedRecycler);
         categoryRecyclerView = findViewById(R.id.categoryRecycler);
         allCategory = findViewById(R.id.allCategoryImage);
@@ -90,41 +96,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        // seedingData
+        List<Category> allCategory = categoryDB.getAll();
+        if (allCategory.size() == 0){
+            long count = categoryDB.seedingData();
+        }
+
+        List<Product> allProduct = productDB.getAll();
+        if(allProduct.size() == 0){
+            productDB.seedingData();
+        }
 
         // adding data to model
-        discountedProductsList = new ArrayList<>();
-        discountedProductsList.add(new DiscountedProducts(1, discountberry));
-        discountedProductsList.add(new DiscountedProducts(2, discountbrocoli));
-        discountedProductsList.add(new DiscountedProducts(3, discountmeat));
-        discountedProductsList.add(new DiscountedProducts(4, discountberry));
-        discountedProductsList.add(new DiscountedProducts(5, discountbrocoli));
-        discountedProductsList.add(new DiscountedProducts(6, discountmeat));
+        discountedProductsList = productDB.getAll();
 
         // adding data to model
-        categoryList = new ArrayList<>();
-        categoryList.add(new Category(1, ic_home_fruits));
-        categoryList.add(new Category(2, ic_home_fish));
-        categoryList.add(new Category(3, ic_home_meats));
-        categoryList.add(new Category(4, ic_home_veggies));
-
+//        categoryList = categoryDB.getAll();
+        categoryList = new ArrayList<Category>();
+        categoryList.add(new Category(1,"Fruits", String.valueOf(ic_home_fruits)));
+        categoryList.add(new Category(2,"Fish", String.valueOf(ic_home_fish)));
+        categoryList.add(new Category( 3,"Meats", String.valueOf(ic_home_meats)));
+        categoryList.add(new Category( 4,"Veggies", String.valueOf(ic_home_veggies)));
         // adding data to model
-        recentlyViewedList = new ArrayList<>();
-//        RecentlyViewed item = new RecentlyViewed(1,"Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", 1, "1", "KG", card4, b4);
-//        RecentlyViewed item2 = new RecentlyViewed(2,"Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", 2, "1", "KG", card3, b3);
-//        RecentlyViewed item3 = new RecentlyViewed(3,"Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", 3, "1", "KG", card2, b1);
-//        RecentlyViewed item4 = new RecentlyViewed(4,"Kiwi", "Chứa đầy đủ các chất dinh dưỡng như vitamin C, vitamin K, vitamin E, folate và kali.", 4, "1", "PC", card1, b2);
-//
-//        _context.add(item);
-//        _context.add(item2);
-//        _context.add(item3);
-//        _context.add(item4);
-        recentlyViewedList = _context.getAll();
-
-
-//        recentlyViewedList.add(new RecentlyViewed(1,"Dưa hấu", "Dưa hấu có hàm lượng nước cao và cũng cung cấp một số chất xơ.", "$8", "1", "KG", card4, b4));
-//        recentlyViewedList.add(new RecentlyViewed("Đu đủ", "Đu đủ là loại trái cây có hàm lượng dinh dưỡng cao và ít calo.", "$5", "1", "KG", card3, b3));
-//        recentlyViewedList.add(new RecentlyViewed("Dâu", "Dâu tây là một loại trái cây có giá trị dinh dưỡng cao, chứa nhiều vitamin C.", "$3", "1", "KG", card2, b1));
-//        recentlyViewedList.add(new RecentlyViewed("Kiwi", "Chứa đầy đủ các chất dinh dưỡng như vitamin C, vitamin K, vitamin E, folate và kali.", "$10", "1", "PC", card1, b2));
+        recentlyViewedList = productDB.getAll();
 
         setDiscountedRecycler(discountedProductsList);
         setCategoryRecycler(categoryList);
@@ -132,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setDiscountedRecycler(List<DiscountedProducts> dataList) {
+    private void setDiscountedRecycler(List<Product> dataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         discountRecyclerView.setLayoutManager(layoutManager);
         discountedProductAdapter = new DiscountedProductAdapter(this, dataList);
@@ -147,10 +141,12 @@ public class MainActivity extends AppCompatActivity {
         categoryRecyclerView.setAdapter(categoryAdapter);
     }
 
-    private void setRecentlyViewedRecycler(List<RecentlyViewed> recentlyViewedDataList) {
+    private void setRecentlyViewedRecycler(List<Product> recentlyViewedDataList) {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recentlyViewedRecycler.setLayoutManager(layoutManager);
         recentlyViewedAdapter = new RecentlyViewedAdapter(this, recentlyViewedDataList);
         recentlyViewedRecycler.setAdapter(recentlyViewedAdapter);
     }
+
+
 }
