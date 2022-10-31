@@ -5,11 +5,11 @@ public class Cart {
 
     int id;
     String name;
-    int price;
+    double price;
     String unit;
     int quantity;
 
-    public Cart(int id, String name, int price, String unit, int quantity) {
+    public Cart(int id, String name, double price, String unit, int quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -17,7 +17,7 @@ public class Cart {
         this.quantity = quantity;
     }
 
-    public Cart(String name, int price, String unit, int quantity) {
+    public Cart(String name, double price, String unit, int quantity) {
         this.name = name;
         this.price = price;
         this.unit = unit;
@@ -41,11 +41,11 @@ public class Cart {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
