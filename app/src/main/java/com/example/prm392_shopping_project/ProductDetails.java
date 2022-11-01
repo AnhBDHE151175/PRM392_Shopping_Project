@@ -45,7 +45,7 @@ public class ProductDetails extends AppCompatActivity {
 
 
         img.setImageResource(image);
-        if (MainActivity.cartList != null) {
+        if (MainActivity.cartList.size() > 0) {
             bage.setText(String.valueOf(MainActivity.cartList.size()));
         }
 

@@ -1,6 +1,8 @@
 package com.example.prm392_shopping_project.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,7 +64,25 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
                         EventBus.getDefault().postSticky(new EventCalculateTotalPrice());
 
                     } else if (cartList.get(pos).getQuantity() == 1) {
-                        MainActivity.cartList.remove(pos);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(view.getRootView().getContext());
+                        builder.setTitle("Thông báo");
+                        builder.setMessage("Bạn có muốn xóa sản phẩm này khỏi giỏ hàng ?");
+                        builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                MainActivity.cartList.remove(pos);
+                                EventBus.getDefault().postSticky(new EventCalculateTotalPrice());
+                                notifyDataSetChanged();
+                            }
+                        });
+                        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.show();
+
                     }
                 } else if (value == 2) {
                     if (cartList.get(pos).getQuantity() < 10) {

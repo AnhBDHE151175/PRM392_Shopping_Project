@@ -155,7 +155,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_semibold"
-        android:text="Sản phẩm xem gần đây"
+        android:text="Sản phẩm bán chạy"
         android:textColor="@android:color/background_dark"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"

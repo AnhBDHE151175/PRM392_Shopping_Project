@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#36DD07"
-        android:title="Cart" />
+        android:title="Giỏ hàng" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_rv"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:text="Total: "
+            android:text="Tổng tiền: "
             android:textColor="#000"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -74,7 +74,7 @@
         android:layout_marginBottom="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Buy"
+        android:text="Mua hàng"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 
