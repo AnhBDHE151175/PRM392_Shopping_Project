@@ -1,20 +1,36 @@
 package com.example.prm392_shopping_project.model;
 
-public class Customer{
+public class Customer {
     private int customerId;
     private String customerName;
+    private String email;
     private String address;
     private String phone;
 
     private Account account;
 
-    public Customer(){
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Customer() {
 
     }
 
     public Customer(int customerId, String customerName, String address, String phone) {
         this.customerId = customerId;
         this.customerName = customerName;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    public Customer(String customerName, String email, String address, String phone) {
+        this.customerName = customerName;
+        this.email = email;
         this.address = address;
         this.phone = phone;
     }
@@ -54,6 +70,7 @@ public class Customer{
     public Account getAccount() {
         return account;
     }
+
     public void setAccount(Account account) {
         this.account = account;
     }

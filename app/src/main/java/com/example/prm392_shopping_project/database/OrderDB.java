@@ -1,7 +1,7 @@
 package com.example.prm392_shopping_project.database;
 
 import static com.example.prm392_shopping_project.database.DatabaseConfig.CUSTOMER_TABLE;
-import static com.example.prm392_shopping_project.database.DatabaseConfig.PRODUCT_TABLE;
+import static com.example.prm392_shopping_project.database.DatabaseConfig.ORDER_TABLE;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -10,31 +10,28 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-import com.example.prm392_shopping_project.model.Customer;
-import com.example.prm392_shopping_project.model.Product;
+import com.example.prm392_shopping_project.model.Order;
 
 import java.util.List;
 
-public class CustomerDB extends AppDatabaseContext implements IGenericDB<Customer>{
-    public CustomerDB(@Nullable Context context) {
+public class OrderDB extends AppDatabaseContext implements IGenericDB<Order>{
+    public OrderDB(@Nullable Context context) {
         super(context);
     }
 
     @Override
-    public long insert(Customer customer) {
+    public long insert(Order order) {
         SQLiteDatabase db = super.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("full_name", customer.getCustomerName());
-        values.put("email", customer.getEmail());
-        values.put("phone", customer.getPhone());
-        values.put("address", customer.getAddress());
-        long count = db.insert(CUSTOMER_TABLE, null, values);
+        values.put("order_date", order.getOrderDate().toString());
+        values.put("total_bill", order.getTotalBill());
+        values.put("customer_id", order.getCustomerId());
+        long count = db.insert(ORDER_TABLE, null, values);
         return count;
     }
-
     public int getMaxId(){
         SQLiteDatabase db = super.getReadableDatabase();
-        String sql = "SELECT * FROM "+CUSTOMER_TABLE+" ORDER BY id DESC LIMIT 1";
+        String sql = "SELECT * FROM "+ORDER_TABLE+" ORDER BY id DESC LIMIT 1";
         Cursor cursor = db.rawQuery(sql,null);
         if (cursor.moveToFirst()) {
             try {
@@ -50,9 +47,8 @@ public class CustomerDB extends AppDatabaseContext implements IGenericDB<Custome
 
     }
 
-
     @Override
-    public long update(Customer customer) {
+    public long update(Order order) {
         return 0;
     }
 
@@ -62,12 +58,12 @@ public class CustomerDB extends AppDatabaseContext implements IGenericDB<Custome
     }
 
     @Override
-    public Customer getById(int id) {
+    public Order getById(int id) {
         return null;
     }
 
     @Override
-    public List<Customer> getAll() {
+    public List<Order> getAll() {
         return null;
     }
 

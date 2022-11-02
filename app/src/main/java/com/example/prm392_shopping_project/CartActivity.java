@@ -64,6 +64,7 @@ public class CartActivity extends AppCompatActivity {
 
                 } else {
                     Intent i = new Intent(getApplicationContext(), BuyConfirm.class);
+                    i.putExtra("totalPrice",totalPrice()+"");
                     startActivity(i);
                 }
 
@@ -85,7 +86,13 @@ public class CartActivity extends AppCompatActivity {
             total += MainActivity.cartList.get(i).getPrice() * MainActivity.cartList.get(i).getQuantity();
         }
         total_price.setText(String.valueOf(total) + " $");
-
+    }
+    public int totalPrice() {
+        int total = 0;
+        for (int i = 0; i < MainActivity.cartList.size(); i++) {
+            total += MainActivity.cartList.get(i).getPrice() * MainActivity.cartList.get(i).getQuantity();
+        }
+        return total;
     }
 
     @Override

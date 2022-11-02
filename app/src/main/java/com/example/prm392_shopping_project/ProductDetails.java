@@ -13,10 +13,10 @@ import com.nex3z.notificationbadge.NotificationBadge;
 
 public class ProductDetails extends AppCompatActivity {
 
-    ImageView img, back, btn_cart,cart;
+    ImageView img, back, btn_cart, cart;
     TextView proName, proPrice, proDesc, proQty, proUnit;
 
-    String name, price, desc, qty, unit;
+    String id, name, price, desc, qty, unit;
     int image;
     NotificationBadge bage;
 
@@ -27,6 +27,7 @@ public class ProductDetails extends AppCompatActivity {
 
         Intent i = getIntent();
 
+        id = i.getStringExtra("id");
         name = i.getStringExtra("name");
         image = i.getIntExtra("image", R.drawable.b1);
         price = i.getStringExtra("price");
@@ -68,7 +69,7 @@ public class ProductDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (MainActivity.cartList.size() > 0) {
-                    Cart productAdd = new Cart(name, Double.parseDouble(price), unit, 1);
+                    Cart productAdd = new Cart(Integer.parseInt(id), name, Double.parseDouble(price), unit, 1);
                     boolean flag = false;
                     for (int i = 0; i < MainActivity.cartList.size(); i++) {
                         if (MainActivity.cartList.get(i).getName().equals(productAdd.getName())) {
@@ -80,7 +81,7 @@ public class ProductDetails extends AppCompatActivity {
                         MainActivity.cartList.add(productAdd);
                     }
                 } else {
-                    MainActivity.cartList.add(new Cart(name, Double.parseDouble(price), unit, 1));
+                    MainActivity.cartList.add(new Cart(Integer.parseInt(id), name, Double.parseDouble(price), unit, 1));
                 }
                 bage.setText(String.valueOf(MainActivity.cartList.size()));
                 Intent i = new Intent(ProductDetails.this, CartActivity.class);
@@ -88,7 +89,8 @@ public class ProductDetails extends AppCompatActivity {
             }
         });
     }
-    public void init(){
+
+    public void init() {
         proName = findViewById(R.id.productName);
         proDesc = findViewById(R.id.prodDesc);
         proPrice = findViewById(R.id.prodPrice);
