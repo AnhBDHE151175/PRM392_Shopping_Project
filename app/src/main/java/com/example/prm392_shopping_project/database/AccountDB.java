@@ -12,7 +12,6 @@ import androidx.annotation.Nullable;
 import com.example.prm392_shopping_project.model.Account;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDB extends AppDatabaseContext implements IGenericDB<Account>{
@@ -23,7 +22,7 @@ public class AccountDB extends AppDatabaseContext implements IGenericDB<Account>
     @Override
     public long insert(Account account) {
         SQLiteDatabase db = super.getWritableDatabase();
-        String isAdmin = "";
+        String isAdmin;
         ContentValues values = new ContentValues();
         values.put("email", account.getEmail());
         values.put("password", account.getPassword());
@@ -51,6 +50,24 @@ public class AccountDB extends AppDatabaseContext implements IGenericDB<Account>
     @Override
     public Account getById(int id) {
         return null;
+    }
+
+    public boolean isAdmin(String email) {
+        String query = "SELECT * FROM Accounts WHERE email = '" + email+"'";
+        long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        boolean isAdmin = false;
+        if (cursor.moveToFirst()) {
+            int isAdmin_temp = cursor.getInt(3);
+            if (isAdmin_temp == 0) {
+                isAdmin  = false;
+            } else {
+                isAdmin = true;
+            }
+        }
+        return isAdmin;
     }
 
     @Override

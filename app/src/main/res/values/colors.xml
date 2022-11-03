@@ -11,5 +11,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="secondary_text">#727272</color>
     <color name="menu">#512DAB</color>
+    <color name="sliver">#FFCC99</color>
 
 </resources>

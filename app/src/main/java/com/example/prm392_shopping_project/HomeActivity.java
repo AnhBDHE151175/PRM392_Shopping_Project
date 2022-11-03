@@ -10,6 +10,7 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageView imageView;
     NavigationView navigationView;
     NavController navController;
-    TextView tv;
+    TextView tv, tvUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,13 @@ public class HomeActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.navHostFragment);
         NavigationUI.setupWithNavController(navigationView, navController);
         tv = findViewById(R.id.tv_Menu);
+        View headerView = navigationView.getHeaderView(0);
+        // getIntent from LoginActivity
+        Intent intent = getIntent();
+        String username = (String) intent.getSerializableExtra("username");
+        tvUsername = headerView.findViewById(R.id.tv_username);
+        tvUsername.setText(username);
+
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {

@@ -12,7 +12,6 @@
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout-w936dp/activity_login.xml" value="0.15368852459016394" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_admin.xml" value="0.19322916666666667" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_all_category.xml" value="0.20606884057971014" />
-        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_buy_confirm.xml" value="0.14311043566362716" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_cart.xml" value="0.1" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_login.xml" value="0.165" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -20,7 +19,6 @@
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/all_category_row_items.xml" value="0.20606884057971014" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/category_row_items.xml" value="0.24954710144927536" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/discounted_row_items.xml" value="0.24954710144927536" />
-        <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/item_cart.xml" value="0.13425925925925927" />
         <entry key="..\:/Project/PRM392_Shopping_Project/app/src/main/res/layout/recently_viewed_items.xml" value="0.19293478260869565" />
         <entry key="..\:/Project/PRM392_Shopping_Project2/app/src/main/res/drawable-v24/ic_account_settings.xml" value="0.16" />
         <entry key="..\:/Project/PRM392_Shopping_Project2/app/src/main/res/drawable-v24/ic_cart_black.xml" value="0.16" />
@@ -46,13 +44,21 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PRM392_Shopping_Project/app/src/main/res/layout/all_category_row_items.xml" value="0.1796875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PRM392_Shopping_Project/app/src/main/res/layout/category_row_items.xml" value="0.1796875" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/PRM392_Shopping_Project/app/src/main/res/layout/recently_viewed_items.xml" value="0.7333333333333334" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/activity_add_category.xml" value="0.3496376811594203" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/activity_buy_confirm.xml" value="0.3496376811594203" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/activity_home.xml" value="0.12407407407407407" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/activity_login.xml" value="0.3473731884057971" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/activity_main.xml" value="0.184375" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/activity_update_delete_category.xml" value="0.33" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/category_row_items.xml" value="0.3473731884057971" />
-        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/fragment_category.xml" value="0.3473731884057971" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/fragment_category.xml" value="0.25" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/fragment_product.xml" value="0.3473731884057971" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/fragment_profile.xml" value="0.3473731884057971" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/item_cart.xml" value="0.3473731884057971" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/item_category_crud.xml" value="0.14" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/navigation_header.xml" value="0.3473731884057971" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/layout/recently_viewed_items.xml" value="0.3614583333333333" />
+        <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/menu/edit_delete_menu.xml" value="0.36041666666666666" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/menu/nagation_menu.xml" value="0.36041666666666666" />
         <entry key="..\:/project/PRM392_Shopping_Project/app/src/main/res/menu/navigation_menu.xml" value="0.12407407407407407" />
       </map>

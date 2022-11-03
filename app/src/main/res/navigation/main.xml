@@ -22,6 +22,4 @@
         android:name="com.example.prm392_shopping_project.fragment.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile"/>
-
-
 </navigation>

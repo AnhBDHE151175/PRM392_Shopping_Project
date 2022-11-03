@@ -14,7 +14,7 @@
             android:id="@+id/layoutToolBar"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="@color/menu"
+            android:background="#FF9800"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingStart="15dp"

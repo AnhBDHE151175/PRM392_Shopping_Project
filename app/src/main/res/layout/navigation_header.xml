@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    tools:context=".HomeActivity"
     android:padding="20dp">
 
     <com.makeramen.roundedimageview.RoundedImageView
@@ -26,7 +27,7 @@
         app:layout_constraintTop_toTopOf="@id/imgProfile" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -37,6 +38,7 @@
         app:layout_constraintStart_toEndOf="@+id/imgProfile" />
 
     <TextView
+        android:id="@+id/verified"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -45,7 +47,7 @@
         android:textColor="@color/teal_200"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imgProfile"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import static com.example.prm392_shopping_project.R.drawable.ic_home_fish;
 import static com.example.prm392_shopping_project.R.drawable.ic_home_fruits;
 import static com.example.prm392_shopping_project.R.drawable.ic_home_meats;
 import static com.example.prm392_shopping_project.R.drawable.ic_home_veggies;
+import static com.example.prm392_shopping_project.database.DatabaseConfig.ACCOUNT_TABLE;
 import static com.example.prm392_shopping_project.database.DatabaseConfig.CATEGORY_TABLE;
 import static com.example.prm392_shopping_project.database.DatabaseConfig.PRODUCT_TABLE;
 
@@ -90,7 +91,6 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
     public List<Category> getAll() {
         List<Category> list = new ArrayList<>();
         String query = "SELECT * FROM " + CATEGORY_TABLE;
-
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
@@ -122,5 +122,22 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
             count = db.insert(CATEGORY_TABLE, null, values);
         }
         return count;
+    }
+
+    public List<Category> getByName(String s) {
+        List<Category> list = new ArrayList<>();
+        String query = "SELECT * FROM " + CATEGORY_TABLE + " where name like '%" + s+"%'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            Category category = new Category(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2)
+            );
+            list.add(category);
+        }
+        return list;
     }
 }
