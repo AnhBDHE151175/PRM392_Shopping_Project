@@ -1,6 +1,8 @@
 package com.example.prm392_shopping_project.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
 
         Category category = categoryList.get(position);
-        holder.categoryImage.setImageResource(Integer.parseInt(category.getImageUrl()));
+        byte[] Image = category.getImageUrl();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
+        holder.categoryImage.setImageBitmap(bitmap);
 
     }
 

@@ -6,17 +6,17 @@ public class Category {
 
     private int id;
     private String name;
-    private String imageUrl;
+    private byte[] imageUrl;
 
     private List<Product> products;
     private Category(){
 
     }
-    public Category(String name, String imageUrl) {
+    public Category(String name, byte[] imageUrl) {
         this.name = name;
         this.imageUrl = imageUrl;
     }
-    public Category(int id, String name, String imageUrl) {
+    public Category(int id, String name, byte[] imageUrl) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
@@ -38,11 +38,11 @@ public class Category {
         this.name = name;
     }
 
-    public String getImageUrl() {
+    public byte[] getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(byte[] imageUrl) {
         this.imageUrl = imageUrl;
     }
 

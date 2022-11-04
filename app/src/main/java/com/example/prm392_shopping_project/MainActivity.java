@@ -115,12 +115,9 @@ public class MainActivity extends AppCompatActivity {
         discountedProductsList = productDB.getAll();
 
         // adding data to model
-//        categoryList = categoryDB.getAll();
         categoryList = new ArrayList<Category>();
-        categoryList.add(new Category(1,"Fruits", String.valueOf(ic_home_fruits)));
-        categoryList.add(new Category(2,"Fish", String.valueOf(ic_home_fish)));
-        categoryList.add(new Category( 3,"Meats", String.valueOf(ic_home_meats)));
-        categoryList.add(new Category( 4,"Veggies", String.valueOf(ic_home_veggies)));
+        categoryList = categoryDB.getAll();
+
         // adding data to model
         recentlyViewedList = productDB.getAll();
 

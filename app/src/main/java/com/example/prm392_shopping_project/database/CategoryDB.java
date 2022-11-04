@@ -1,32 +1,15 @@
 package com.example.prm392_shopping_project.database;
 
-import static com.example.prm392_shopping_project.R.drawable.b1;
-import static com.example.prm392_shopping_project.R.drawable.b2;
-import static com.example.prm392_shopping_project.R.drawable.b3;
-import static com.example.prm392_shopping_project.R.drawable.b4;
-import static com.example.prm392_shopping_project.R.drawable.card1;
-import static com.example.prm392_shopping_project.R.drawable.card2;
-import static com.example.prm392_shopping_project.R.drawable.card3;
-import static com.example.prm392_shopping_project.R.drawable.card4;
-import static com.example.prm392_shopping_project.R.drawable.ic_home_fish;
-import static com.example.prm392_shopping_project.R.drawable.ic_home_fruits;
-import static com.example.prm392_shopping_project.R.drawable.ic_home_meats;
-import static com.example.prm392_shopping_project.R.drawable.ic_home_veggies;
-import static com.example.prm392_shopping_project.database.DatabaseConfig.ACCOUNT_TABLE;
 import static com.example.prm392_shopping_project.database.DatabaseConfig.CATEGORY_TABLE;
-import static com.example.prm392_shopping_project.database.DatabaseConfig.PRODUCT_TABLE;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
 import com.example.prm392_shopping_project.model.Category;
-import com.example.prm392_shopping_project.model.Product;
-import com.example.prm392_shopping_project.model.RecentlyViewed;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,11 +59,11 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
 
-        if (cursor.moveToNext()) {
+        if (cursor.moveToFirst()) {
             Category category = new Category(
                     cursor.getInt(0),
                     cursor.getString(1),
-                    cursor.getString(2)
+                    cursor.getBlob(2)
             );
             return category;
         }
@@ -98,7 +81,7 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
             Category category = new Category(
                     cursor.getInt(0),
                     cursor.getString(1),
-                    cursor.getString(2)
+                    cursor.getBlob(2)
             );
             list.add(category);
         }
@@ -109,10 +92,10 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
     public long seedingData() {
         long count = 0;
         List<Category> list = new ArrayList<>();
-        list.add(new Category("Fruits", String.valueOf(ic_home_fruits)));
-        list.add(new Category("Fish", String.valueOf(ic_home_fish)));
-        list.add(new Category( "Meats", String.valueOf(ic_home_meats)));
-        list.add(new Category( "Veggies", String.valueOf(ic_home_veggies)));
+//        list.add(new Category("Fruits", String.valueOf(ic_home_fruits)));
+//        list.add(new Category("Fish", String.valueOf(ic_home_fish)));
+//        list.add(new Category( "Meats", String.valueOf(ic_home_meats)));
+//        list.add(new Category( "Veggies", String.valueOf(ic_home_veggies)));
         SQLiteDatabase db = super.getWritableDatabase();
         for (int i = 0; i < list.size(); i++) {
             Category category = list.get(i);
@@ -134,7 +117,7 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
             Category category = new Category(
                     cursor.getInt(0),
                     cursor.getString(1),
-                    cursor.getString(2)
+                    cursor.getBlob(2)
             );
             list.add(category);
         }
