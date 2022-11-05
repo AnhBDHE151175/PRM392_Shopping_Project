@@ -37,12 +37,12 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
     public long insert(Product product) {
         SQLiteDatabase db = super.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("id", product.getId());
         values.put("name", product.getName());
         values.put("description", product.getDescription());
         values.put("price", product.getPrice());
         values.put("quantity", product.getQuantity());
-        values.put("category_id", product.getCategory().getId());
+        values.put("unit", product.getUnit());
+        values.put("category_id", product.getCategoryId());
         values.put("discount", product.getDiscount());
         values.put("imageUrl", product.getImageUrl());
         values.put("bigImageUrl", product.getBigImageUrl());
@@ -62,10 +62,11 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         values.put("description", product.getDescription());
         values.put("price", product.getPrice());
         values.put("quantity", product.getQuantity());
-        values.put("category_id", product.getCategory().getId());
+        values.put("unit", product.getUnit());
+//        values.put("category_id", product.getCategoryId());
         values.put("discount", product.getDiscount());
-        values.put("imageUrl", product.getImageUrl());
-        values.put("bigImageUrl", product.getBigImageUrl());
+//        values.put("imageUrl", product.getImageUrl());
+//        values.put("bigImageUrl", product.getBigImageUrl());
         long count = db.update(PRODUCT_TABLE, values, "id=?", new String[]{String.valueOf(product.getId())});
         return count;
     }

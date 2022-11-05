@@ -123,7 +123,31 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
         }
         return list;
     }
+    public List<String> getNameCategory() {
+        List<String> list = new ArrayList<>();
+        String query = "SELECT * FROM " + CATEGORY_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()) {
+            String category = cursor.getString(1);
+            list.add(category);
+        }
+        return list;
+    }
 
+    public int getIdbyName(String s) {
+        String query = "SELECT * FROM " + CATEGORY_TABLE + " where name like '%" + s+"%'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
 
-
+        while (cursor.moveToNext()) {
+            Category category = new Category(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getBlob(2)
+            );
+            return category.getId();
+        }
+        return -1;
+    }
 }
