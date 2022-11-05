@@ -25,6 +25,7 @@ import com.example.prm392_shopping_project.database.AccountDB;
 import com.example.prm392_shopping_project.database.AppDatabaseContext;
 import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.database.ProductDB;
+import com.example.prm392_shopping_project.model.Account;
 import com.example.prm392_shopping_project.model.Cart;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.Product;
@@ -109,8 +110,11 @@ public class MainActivity extends AppCompatActivity {
             productDB.seedingData();
         }
 
-        accountDB.seedingData();
-
+        List<Account> listAccount = new ArrayList<>();
+        listAccount = accountDB.getAll();
+        if (listAccount.size() == 0) {
+            accountDB.seedingData();
+        }
         // adding data to model
         discountedProductsList = productDB.getAll();
 

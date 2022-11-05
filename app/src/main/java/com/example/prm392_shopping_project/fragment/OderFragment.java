@@ -11,9 +11,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.prm392_shopping_project.R;
 
-public class ProfileFragment extends Fragment {
+public class OderFragment extends Fragment {
 
-    public ProfileFragment() {
+    public OderFragment() {
     }
 
     @Nullable

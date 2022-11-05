@@ -53,8 +53,8 @@
 
     <ImageView
         android:id="@+id/imgAddCate"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="161dp"
+        android:layout_height="155dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="84dp"
         android:src="@drawable/profile_picture"
@@ -66,9 +66,19 @@
         android:id="@+id/btn_upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="132dp"
         android:text="upload"
         app:layout_constraintStart_toEndOf="@+id/imgAddCate"
         app:layout_constraintTop_toBottomOf="@+id/edt_nameadd" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="116dp"
+        android:text="Cancel"
+        app:layout_constraintStart_toEndOf="@+id/btn_add"
+        app:layout_constraintTop_toBottomOf="@+id/imgAddCate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

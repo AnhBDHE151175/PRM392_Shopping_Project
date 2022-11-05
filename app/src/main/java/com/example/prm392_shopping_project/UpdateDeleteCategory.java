@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -20,11 +22,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.prm392_shopping_project.adapter.CategoryCRUDAdapter;
 import com.example.prm392_shopping_project.database.CategoryDB;
+import com.example.prm392_shopping_project.database.ProductDB;
+import com.example.prm392_shopping_project.fragment.CategoryFragment;
 import com.example.prm392_shopping_project.model.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UpdateDeleteCategory extends AppCompatActivity {
     TextView tv_id;
@@ -32,6 +39,7 @@ public class UpdateDeleteCategory extends AppCompatActivity {
     ImageView imgView;
     Button btn_update, btn_dele, btn_uploadUpdate;
     CategoryDB db;
+    ProductDB pdb;
     final int REQUEST_CODE_GALLERY = 999;
 
     @Override
@@ -39,6 +47,7 @@ public class UpdateDeleteCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_delete_category);
 
+        pdb = new ProductDB(this);
         db = new CategoryDB(this);
         tv_id = findViewById(R.id.tv_id);
         edt_name = findViewById(R.id.edt_nameupdate);
@@ -72,15 +81,39 @@ public class UpdateDeleteCategory extends AppCompatActivity {
                 String name = edt_name.getText().toString();
                 Category category = new Category(id, name, imageViewToByte(imgView));
                 db.update(category);
-                finish();
-
+                Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
+                startActivity(intent);
             }
         });
 
         btn_dele.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int id = Integer.parseInt(tv_id.getText().toString());
+                if (pdb.getById(id) == null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                    builder.setTitle("Notification");
+                    builder.setMessage("Are you sure remove this category?");
+                    builder.setIcon(R.drawable.ic_delete);
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            db.delete(id);
+                            Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
+                            startActivity(intent);
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
 
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Toast.makeText(UpdateDeleteCategory.this, "This category still exists product!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -101,7 +134,7 @@ public class UpdateDeleteCategory extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(intent, REQUEST_CODE_GALLERY);
             } else {
-                Toast.makeText(this, "Ban chua mo quyen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please grant this permission!", Toast.LENGTH_SHORT).show();
             }
             return;
         }

@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/menuProfile"
-        android:name="com.example.prm392_shopping_project.fragment.ProfileFragment"
+        android:name="com.example.prm392_shopping_project.fragment.OderFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile"/>
 </navigation>

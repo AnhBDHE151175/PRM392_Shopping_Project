@@ -40,11 +40,19 @@ public class Login extends AppCompatActivity {
                 } else {
                     Boolean checkuserpass = db.checkUserNamePassword(user, pass);
                     if (checkuserpass == true) {
-                        Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        intent.putExtra("isAdmin", isAdmin);
-                        intent.putExtra("username", user);
-                        startActivity(intent);
+
+                        if (isAdmin) {
+                            Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                            intent.putExtra("isAdmin", isAdmin);
+                            intent.putExtra("username", user);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(Login.this, "Login By User!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+
+                        }
                     } else {
                         Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
                     }

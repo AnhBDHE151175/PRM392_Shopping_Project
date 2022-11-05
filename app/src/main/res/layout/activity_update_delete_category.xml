@@ -59,8 +59,8 @@
 
     <ImageView
         android:id="@+id/imgViewupdate"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="140dp"
+        android:layout_height="139dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="75dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,8 +93,8 @@
         android:id="@+id/btn_uploadUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="49dp"
-        android:layout_marginTop="97dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="124dp"
         android:text="UpLoad"
         app:layout_constraintStart_toEndOf="@+id/imgViewupdate"
         app:layout_constraintTop_toBottomOf="@+id/edt_nameupdate" />

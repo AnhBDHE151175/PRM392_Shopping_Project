@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.prm392_shopping_project.database.CategoryDB;
+import com.example.prm392_shopping_project.fragment.CategoryFragment;
 import com.example.prm392_shopping_project.model.Category;
 
 import java.io.ByteArrayOutputStream;
@@ -28,7 +29,7 @@ import java.io.InputStream;
 public class AddCategory extends AppCompatActivity {
     EditText edt_name;
     ImageView imageView;
-    Button btn_upload, btn_add;
+    Button btn_upload, btn_add, btn_cancel;
     CategoryDB db ;
     final int REQUEST_CODE_GALLERY = 999;
 
@@ -36,11 +37,13 @@ public class AddCategory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
+
         db = new CategoryDB(this);
         edt_name = findViewById(R.id.edt_nameadd);
         imageView = findViewById(R.id.imgAddCate);
         btn_add = findViewById(R.id.btn_add);
         btn_upload = findViewById(R.id.btn_upload);
+        btn_cancel = findViewById(R.id.btn_cancel);
 
         btn_upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +67,14 @@ public class AddCategory extends AppCompatActivity {
                 }catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
+                startActivity(intent);
             }
         });
     }
