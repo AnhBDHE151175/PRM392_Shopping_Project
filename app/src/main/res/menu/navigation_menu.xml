@@ -11,7 +11,7 @@
         android:title="Category"/>
 
     <item
-        android:id="@+id/menuProfile"
+        android:id="@+id/menuTotalOrder"
         android:icon="@drawable/user"
         android:title="Total Order"/>
 
