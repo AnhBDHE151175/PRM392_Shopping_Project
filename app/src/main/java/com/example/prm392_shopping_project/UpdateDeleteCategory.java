@@ -46,7 +46,6 @@ public class UpdateDeleteCategory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_delete_category);
-
         pdb = new ProductDB(this);
         db = new CategoryDB(this);
         tv_id = findViewById(R.id.tv_id);
@@ -116,6 +115,7 @@ public class UpdateDeleteCategory extends AppCompatActivity {
                 }
             }
         });
+
     }
     private byte[] imageViewToByte(ImageView imageView) {
         Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();

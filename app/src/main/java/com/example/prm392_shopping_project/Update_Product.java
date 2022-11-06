@@ -56,7 +56,6 @@ public class Update_Product extends AppCompatActivity {
         pro.setDiscount(Integer.parseInt(edt_discount.getText().toString()));
 
         productDB= new ProductDB(this);
-        db = productDB.getWritableDatabase();
         productDB.update(pro);
         Toast.makeText(Update_Product.this,"Update thanh cong",Toast.LENGTH_LONG).show();
     }
