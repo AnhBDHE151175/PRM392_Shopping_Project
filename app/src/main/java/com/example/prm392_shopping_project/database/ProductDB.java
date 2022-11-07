@@ -72,7 +72,7 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
     @Override
     public Product getById(int id) {
         SQLiteDatabase db = super.getReadableDatabase();
-        String query = "SELECT * FROM " + databaseConfig.PRODUCT_TABLE + " WHERE category_id = " + id;
+        String query = "SELECT * FROM " + databaseConfig.PRODUCT_TABLE + " WHERE id = " + id;
 
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {

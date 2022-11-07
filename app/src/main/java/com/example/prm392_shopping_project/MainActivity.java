@@ -113,13 +113,11 @@ public class MainActivity extends AppCompatActivity {
 //        if (allCategory.size() == 0){
 //            long count = categoryDB.seedingData();
 //        }
-
        List<Product> allProduct = new ArrayList<>();
            allProduct =   productDB.getAll();
 //        if(allProduct.size() == 0){
 //            productDB.seedingData();
 //        }
-
         List<Account> listAccount = new ArrayList<>();
         listAccount = accountDB.getAll();
         if (listAccount.size() == 0) {
