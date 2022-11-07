@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -18,8 +17,7 @@ import com.example.prm392_shopping_project.model.Customer;
 import com.example.prm392_shopping_project.model.Order;
 import com.example.prm392_shopping_project.model.OrderDetail;
 
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
+import java.sql.Date;
 
 public class BuyConfirm extends AppCompatActivity {
 
@@ -53,7 +51,8 @@ public class BuyConfirm extends AppCompatActivity {
                     builder.show();
 
                 } else {
-                    Date date = new Date();
+                    long millis = System.currentTimeMillis();
+                    Date date = new Date(millis);
                     Customer cus = new Customer(name, email, address, phone);
                     long a = customerDB.insert(cus);
                     int cusId = customerDB.getMaxId();
