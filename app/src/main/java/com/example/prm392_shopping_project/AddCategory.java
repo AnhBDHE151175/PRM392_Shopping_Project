@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.fragment.CategoryFragment;
+import com.example.prm392_shopping_project.fragment.ProductFragment;
 import com.example.prm392_shopping_project.model.Category;
 
 import java.io.ByteArrayOutputStream;
@@ -73,7 +74,8 @@ public class AddCategory extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(AddCategory.this, CategoryFragment.class);
+                startActivity(intent);
             }
         });
     }
