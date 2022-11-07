@@ -82,6 +82,8 @@ public class Update_Product extends AppCompatActivity {
 
         byte[] imgUrl= imageViewToByte(img_imv);
         byte[] bigImgUrl=imageViewToByte(img_imv);
+        pro.setImageUrl(imgUrl);
+
         productDB= new ProductDB(this);
         productDB.update(pro);
         Toast.makeText(Update_Product.this,"Update thanh cong",Toast.LENGTH_LONG).show();

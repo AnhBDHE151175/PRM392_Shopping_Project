@@ -56,7 +56,7 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         values.put("quantity", product.getQuantity());
         values.put("unit", product.getUnit());
         values.put("discount", product.getDiscount());
-//        values.put("imageUrl", product.getImageUrl());
+        values.put("imageUrl", product.getImageUrl());
 //        values.put("bigImageUrl", product.getBigImageUrl());
         long count = db.update(PRODUCT_TABLE, values, "id=?", new String[]{String.valueOf(product.getId())});
         return count;

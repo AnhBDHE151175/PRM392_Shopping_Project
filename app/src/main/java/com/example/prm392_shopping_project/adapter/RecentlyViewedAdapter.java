@@ -64,7 +64,6 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
 
         Product product = recentlyViewedList.get(position);
         holder.name.setText(product.getName());
-        holder.description.setText(product.getDescription());
         holder.price.setText(product.getPrice() + "$/");
         holder.unit.setText(product.getUnit());
         holder.discount.setText(String.valueOf(product.getDiscount()));
@@ -94,7 +93,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
 
     public class RecentlyViewedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView name, description, price, discount, unit;
+        TextView name, price, discount, unit;
         ImageView img;
         CardView layoutItemRV;
 
@@ -102,7 +101,6 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
             super(itemView);
 
             name = itemView.findViewById(R.id.tv_nameRV);
-            description = itemView.findViewById(R.id.tv_descriptionRV);
             unit = itemView.findViewById(R.id.tv_unitRV);
             price = itemView.findViewById(R.id.tv_priceRV);
             discount=itemView.findViewById(R.id.tv_discountRV);

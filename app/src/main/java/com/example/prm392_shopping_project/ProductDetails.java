@@ -57,7 +57,7 @@ public class ProductDetails extends AppCompatActivity {
         price= pro.getPrice() + " $";
         price_cart=pro.getPrice();
         desc=pro.getDescription();
-        qty=pro.getDescription()+" ";
+        qty=pro.getQuantity()+" ";
         unit=pro.getUnit();
 
         proName.setText(name);

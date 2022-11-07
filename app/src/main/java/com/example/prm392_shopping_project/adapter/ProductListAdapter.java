@@ -45,7 +45,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product p = list.get(position);
         holder.name.setText(p.getName());
-        holder.desc.setText(p.getDescription());
         holder.price.setText(p.getPrice()+"");
         holder.unit.setText(p.getUnit());
         holder.discount.setText(p.getDiscount()+"");
@@ -64,13 +63,12 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView productImage;
-        TextView name, desc, price, unit, discount;
+        TextView name, price, unit, discount;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
             productImage = itemView.findViewById(R.id.imv_imgRV);
             name  = itemView.findViewById(R.id.tv_nameRV);
-            desc = itemView.findViewById(R.id.tv_descriptionRV);
             price = itemView.findViewById(R.id.tv_priceRV);
             unit = itemView.findViewById(R.id.tv_unitRV);
             discount = itemView.findViewById(R.id.tv_discountRV);
