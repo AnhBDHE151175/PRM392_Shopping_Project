@@ -8,6 +8,7 @@ import static com.example.prm392_shopping_project.R.drawable.card1;
 import static com.example.prm392_shopping_project.R.drawable.card2;
 import static com.example.prm392_shopping_project.R.drawable.card3;
 import static com.example.prm392_shopping_project.R.drawable.card4;
+import static com.example.prm392_shopping_project.database.DatabaseConfig.CATEGORY_TABLE;
 import static com.example.prm392_shopping_project.database.DatabaseConfig.PRODUCT_TABLE;
 
 import android.content.ContentValues;
@@ -17,6 +18,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
+import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.Product;
 
 import java.util.ArrayList;
@@ -159,5 +161,27 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
     }
 
 
+    public List<Product> getByName(String s) {
+        List<Product> list = new ArrayList<>();
+        String query = "SELECT * FROM " + PRODUCT_TABLE + " where name like '%" + s+"%'";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
 
+        while (cursor.moveToNext()) {
+            Product product = new Product(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getInt(7),
+                    cursor.getString(8),
+                    cursor.getString(9)
+            );
+            list.add(product);
+        }
+        return list;
+    }
 }

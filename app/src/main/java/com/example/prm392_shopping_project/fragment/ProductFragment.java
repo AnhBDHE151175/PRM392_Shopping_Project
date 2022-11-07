@@ -35,6 +35,7 @@ public class ProductFragment extends Fragment implements ProductAdapter.ProductL
     ProductDB db;
     List<Product> list;
     FloatingActionButton fab;
+    SearchView searchView;
     public ProductFragment() {
     }
 
@@ -48,7 +49,7 @@ public class ProductFragment extends Fragment implements ProductAdapter.ProductL
         db= new ProductDB((getContext()));
         fab = view.findViewById(R.id.fab_Product);
         recyclerView = view.findViewById(R.id.recycleViewProduct);
-//        searchView = view.findViewById(R.id.searchView);
+        searchView = view.findViewById(R.id.sv_product);
 
         list = new ArrayList<>();
         list = db.getAll();
@@ -65,19 +66,19 @@ public class ProductFragment extends Fragment implements ProductAdapter.ProductL
         LinearLayoutManager manager = new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                List<Category> list = db.getByName(s);
-//                adapter.setList(list);
-//                return true;
-//            }
-//        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                List<Product> list = db.getByName(s);
+                adapter.setList(list);
+                return true;
+            }
+        });
     }
     public void onItemClick(View view, int position) {
         Product product = adapter.getProductAt(position);

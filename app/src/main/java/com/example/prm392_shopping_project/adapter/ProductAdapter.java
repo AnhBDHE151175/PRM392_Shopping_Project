@@ -45,7 +45,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     public void setProductListener(ProductAdapter.ProductListener productListener) {
         ProductListener = productListener;
     }
-
+    public void setList(List<Product> list) {
+        this.products= list;
+        notifyDataSetChanged(); // refesh
+    }
     public ProductAdapter(List<Product> products) {
         this.products = products;
     }
