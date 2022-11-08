@@ -1,14 +1,5 @@
 package com.example.prm392_shopping_project.database;
 
-import static com.example.prm392_shopping_project.R.drawable.b1;
-import static com.example.prm392_shopping_project.R.drawable.b2;
-import static com.example.prm392_shopping_project.R.drawable.b3;
-import static com.example.prm392_shopping_project.R.drawable.b4;
-import static com.example.prm392_shopping_project.R.drawable.card1;
-import static com.example.prm392_shopping_project.R.drawable.card2;
-import static com.example.prm392_shopping_project.R.drawable.card3;
-import static com.example.prm392_shopping_project.R.drawable.card4;
-import static com.example.prm392_shopping_project.database.DatabaseConfig.CATEGORY_TABLE;
 import static com.example.prm392_shopping_project.database.DatabaseConfig.PRODUCT_TABLE;
 
 import android.content.ContentValues;
@@ -18,7 +9,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import androidx.annotation.Nullable;
 
-import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.Product;
 
 import java.util.ArrayList;

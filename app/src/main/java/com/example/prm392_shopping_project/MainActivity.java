@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     RecentlyViewedAdapter recentlyViewedAdapter;
     List<Product> recentlyViewedList;
 
-    TextView allCategory;
+    TextView allCategory, tv_product;
     ImageView cart, setting;
     NotificationBadge bage;
 
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         discountRecyclerView = findViewById(R.id.discountedRecycler);
         categoryRecyclerView = findViewById(R.id.categoryRecycler);
         allCategory = findViewById(R.id.allCategoryImage);
+        tv_product = findViewById(R.id.tv_product);
         recentlyViewedRecycler = findViewById(R.id.recently_item);
         cart = findViewById(R.id.cart_main);
         setting = findViewById(R.id.setting_main);
@@ -77,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
 //            bage.setText("0");
 
         }
+
+        tv_product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, AllProductActivity.class);
+                startActivity(i);
+            }
+        });
 
         allCategory.setOnClickListener(new View.OnClickListener() {
             @Override
