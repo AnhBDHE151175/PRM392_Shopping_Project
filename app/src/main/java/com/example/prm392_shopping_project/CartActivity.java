@@ -78,6 +78,7 @@ public class CartActivity extends AppCompatActivity {
         total_price = findViewById(R.id.total_price);
         btnBuy = findViewById(R.id.btnmuahang);
 
+
     }
 
     public void calTotalPrice() {

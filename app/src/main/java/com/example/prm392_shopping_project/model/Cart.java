@@ -8,20 +8,23 @@ public class Cart {
     double price;
     String unit;
     int quantity;
+    byte[] img;
 
-    public Cart(int id, String name, double price, String unit, int quantity) {
+    public Cart(int id, String name, double price, String unit, int quantity,byte[] img) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.unit = unit;
         this.quantity = quantity;
+        this.img=img;
     }
 
-    public Cart(String name, double price, String unit, int quantity) {
+    public Cart(String name, double price, String unit, int quantity,byte[] img) {
         this.name = name;
         this.price = price;
         this.unit = unit;
         this.quantity = quantity;
+        this.img=img;
     }
 
 
@@ -65,5 +68,11 @@ public class Cart {
         this.quantity = quantity;
     }
 
+    public byte[] getImg() {
+        return img;
+    }
 
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
 }

@@ -3,6 +3,8 @@ package com.example.prm392_shopping_project.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +55,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
         holder.price.setText(cartList.get(position).getPrice() + " $");
         holder.quantity.setText(cartList.get(position).getQuantity() + "");
         holder.total.setText(cartList.get(position).getQuantity() * cartList.get(position).getPrice() + " $");
+        byte[] Image = cartList.get(position).getImg();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
+        holder.img.setImageBitmap(bitmap);
         holder.setListener(new IImageOnClick() {
             @Override
             public void onImageClick(View view, int pos, int value) {
@@ -106,7 +111,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView price, quantity, name, total;
-        ImageView minus, plus;
+        ImageView minus, plus, img;
         IImageOnClick listener;
 
         public void setListener(IImageOnClick listener) {
@@ -120,9 +125,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> 
             quantity = itemView.findViewById(R.id.item_giohang_soluong);
             total = itemView.findViewById(R.id.item_giohang_giasp2);
             price = itemView.findViewById(R.id.item_giohang_gia);
+            img=itemView.findViewById(R.id.item_giohang_image);
             minus = itemView.findViewById(R.id.item_giohang_tru);
             plus = itemView.findViewById(R.id.item_giohang_cong);
-
             plus.setOnClickListener(this);
             minus.setOnClickListener(this);
         }

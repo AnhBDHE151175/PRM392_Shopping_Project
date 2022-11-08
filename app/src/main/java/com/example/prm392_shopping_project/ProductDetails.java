@@ -28,7 +28,9 @@ public class ProductDetails extends AppCompatActivity {
     ImageView imgView, back, btn_cart, cart;
     TextView proName, proPrice, proDesc, proQty, proUnit;
 
-    String id, name, price, desc, qty, unit;
+    String name, price, desc, qty, unit;
+    int id;
+    double price_cart;
     byte[] image;
     NotificationBadge bage;
     final int REQUEST_CODE_GALLERY = 999;
@@ -50,8 +52,10 @@ public class ProductDetails extends AppCompatActivity {
         Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
         imgView.setImageBitmap(bitmap);
 
+        id=pro.getId();
         name= pro.getName();
         price= pro.getPrice() + " $";
+        price_cart=pro.getPrice();
         desc=pro.getDescription();
         qty=pro.getDescription()+" ";
         unit=pro.getUnit();
@@ -85,8 +89,8 @@ public class ProductDetails extends AppCompatActivity {
         btn_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.cartList.size() > 0) {
-                    Cart productAdd = new Cart(Integer.parseInt(id), name, Double.parseDouble(price), unit, 1);
+                if (MainActivity.cartList.size()> 0) {
+                    Cart productAdd = new Cart(id, name, price_cart, unit, 1,img);
                     boolean flag = false;
                     for (int i = 0; i < MainActivity.cartList.size(); i++) {
                         if (MainActivity.cartList.get(i).getName().equals(productAdd.getName())) {
@@ -98,7 +102,7 @@ public class ProductDetails extends AppCompatActivity {
                         MainActivity.cartList.add(productAdd);
                     }
                 } else {
-                    MainActivity.cartList.add(new Cart(Integer.parseInt(id), name, Double.parseDouble(price), unit, 1));
+                    MainActivity.cartList.add(new Cart(id, name, price_cart, unit, 1,img));
                 }
                 bage.setText(String.valueOf(MainActivity.cartList.size()));
                 Intent i = new Intent(ProductDetails.this, CartActivity.class);
