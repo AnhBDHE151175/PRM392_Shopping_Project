@@ -36,7 +36,7 @@ public class ListProductAdapter extends RecyclerView.Adapter<ListProductAdapter.
         holder.prdName.setText(product.getName());
         holder.prdPrice.setText(product.getPrice()+" $/");
         holder.imgPrd.setImageResource(Integer.parseInt(product.getImageUrl()));
-        holder.quantity1.setText("Số lượng: "+product.getQuantity() + "");
+        holder.quantity1.setText("Số lượng: "+product.getQuantity());
         holder.unit1.setText(product.getUnit());
     }
 
