@@ -61,7 +61,7 @@ public class AddCategory extends AppCompatActivity {
                             edt_name.getText().toString().trim(),
                             imageViewToByte(imageView))
                     );
-                    Toast.makeText(AddCategory.this, "Add thanh cong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddCategory.this, "Add successfully", Toast.LENGTH_SHORT).show();
                     edt_name.setText("");
                     imageView.setImageResource(R.drawable.profile_picture);
                 }catch (Exception e) {
@@ -95,7 +95,7 @@ public class AddCategory extends AppCompatActivity {
                 intent.setType("image/*");
                 startActivityForResult(intent, REQUEST_CODE_GALLERY);
             } else {
-                Toast.makeText(this, "Ban chua mo quyen", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You have not opened permissions!", Toast.LENGTH_SHORT).show();
             }
             return;
         }

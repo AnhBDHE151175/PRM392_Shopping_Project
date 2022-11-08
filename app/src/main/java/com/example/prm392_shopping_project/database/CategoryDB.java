@@ -88,6 +88,23 @@ public class CategoryDB extends AppDatabaseContext implements IGenericDB<Categor
         return list;
     }
 
+    public List<Category> getTop() {
+        List<Category> list = new ArrayList<>();
+        String query = "SELECT * FROM " + CATEGORY_TABLE + " LIMIT 4";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            Category category = new Category(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getBlob(2)
+            );
+            list.add(category);
+        }
+        return list;
+    }
+
     @Override
     public long seedingData() {
         long count = 0;
