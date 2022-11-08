@@ -19,6 +19,8 @@
             android:layout_marginBottom="22dp"
             android:text="TextView"
             android:textSize="24sp"
+            android:textStyle="bold"
+            app:autoSizeTextType="none"
             app:layout_constraintBottom_toTopOf="@+id/prdPrice"
             app:layout_constraintStart_toEndOf="@+id/imgPrd"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,9 +30,10 @@
             android:id="@+id/prdPrice"
             android:layout_width="105dp"
             android:layout_height="29dp"
-            android:layout_marginTop="104dp"
+            android:layout_marginTop="92dp"
             android:layout_marginEnd="172dp"
             android:text="TextView"
+            android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -50,22 +53,30 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/quan"
+            android:id="@+id/quantity1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="64dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/prdPrice"
-            app:layout_constraintStart_toEndOf="@+id/prdPrice"
-            app:layout_constraintTop_toTopOf="@+id/prdPrice" />
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/prdName"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/unit1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="132dp"
+            android:layout_marginBottom="88dp"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="@+id/quan"
-            app:layout_constraintStart_toEndOf="@+id/quan"
-            app:layout_constraintTop_toTopOf="@+id/quan" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintStart_toEndOf="@+id/imgPrd" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
