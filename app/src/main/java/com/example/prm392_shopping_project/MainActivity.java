@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView cart, setting;
     NotificationBadge bage;
 
+    Button button;
+
     public static List<Cart> cartList;
 
     @Override
@@ -68,6 +70,15 @@ public class MainActivity extends AppCompatActivity {
         cart = findViewById(R.id.cart_main);
         setting = findViewById(R.id.setting_main);
         bage = findViewById(R.id.badge_main);
+
+        button = findViewById(R.id.button3);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ListProduct.class);
+                startActivity(i);
+            }
+        });
         if (cartList != null) {
 //            bage.setText(String.valueOf(cartList.size()));
 

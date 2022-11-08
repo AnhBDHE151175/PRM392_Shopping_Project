@@ -50,6 +50,7 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         return count;
     }
 
+
     @Override
     public long update(Product product) {
         Product oldProduct = this.getById(product.getId());

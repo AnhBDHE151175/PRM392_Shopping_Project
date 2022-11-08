@@ -54,7 +54,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             super(itemView);
 
             categoryImage = itemView.findViewById(R.id.categoryImage);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
 
+                }
+            });
         }
     }
 
