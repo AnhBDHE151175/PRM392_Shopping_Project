@@ -110,12 +110,12 @@
         android:id="@+id/btn_addProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginBottom="20dp"
         android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_addImg" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imv_addImg"
@@ -143,12 +143,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="93dp"
-        android:layout_marginTop="72dp"
         android:layout_marginEnd="101dp"
+        android:layout_marginBottom="20dp"
         android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_addProduct"
-        app:layout_constraintTop_toBottomOf="@+id/btn_addImg" />
+        app:layout_constraintStart_toEndOf="@+id/btn_addProduct" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

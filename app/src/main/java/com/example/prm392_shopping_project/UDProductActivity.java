@@ -51,9 +51,9 @@ public class UDProductActivity extends AppCompatActivity {
         tv_price.setText(String.valueOf(pro.getPrice()));
         tv_unit.setText(pro.getUnit());
         tv_quantity.setText(String.valueOf(pro.getQuantity()));
-//        byte[] img = (byte[]) pro.getImageUrl();
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
-//        imgView.setImageBitmap(bitmap);
+        byte[] img = (byte[]) pro.getImageUrl();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+        imgView.setImageBitmap(bitmap);
     }
 
     public void onUpdateProduct(View view) {

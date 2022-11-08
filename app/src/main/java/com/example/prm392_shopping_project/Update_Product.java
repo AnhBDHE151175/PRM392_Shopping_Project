@@ -58,7 +58,13 @@ public class Update_Product extends AppCompatActivity {
         byte[] img = (byte[]) pro.getImageUrl();
         Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
         img_imv.setImageBitmap(bitmap);
-
+        btn_upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ActivityCompat.requestPermissions(Update_Product.this,
+                        new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},REQUEST_CODE_GALLERY);
+            }
+        });
 
     }
 
@@ -73,13 +79,7 @@ public class Update_Product extends AppCompatActivity {
         pro.setUnit(edt_unit.getText().toString());
         pro.setQuantity(Integer.parseInt(edt_quantity.getText().toString()));
         pro.setDiscount(Integer.parseInt(edt_discount.getText().toString()));
-        btn_upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ActivityCompat.requestPermissions(Update_Product.this,
-                        new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},REQUEST_CODE_GALLERY);
-            }
-        });
+
         byte[] imgUrl= imageViewToByte(img_imv);
         byte[] bigImgUrl=imageViewToByte(img_imv);
         productDB= new ProductDB(this);

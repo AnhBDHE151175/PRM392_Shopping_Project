@@ -3,6 +3,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prm392_shopping_project.ProductDetails;
@@ -60,14 +60,14 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder,int position) {
+    public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder, int position) {
 
         Product product = recentlyViewedList.get(position);
         holder.name.setText(product.getName());
         holder.description.setText(product.getDescription());
         holder.price.setText(product.getPrice() + "$/");
         holder.unit.setText(product.getUnit());
-        holder.quantity.setText(String.valueOf(product.getQuantity()));
+        holder.discount.setText(String.valueOf(product.getDiscount()));
         byte[] Image = product.getImageUrl();
         Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
         holder.img.setImageBitmap(bitmap);
@@ -77,13 +77,10 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
             public void onClick(View view) {
 
                 Intent i=new Intent(context, ProductDetails.class);
-                i.putExtra("id", recentlyViewedList.get(position).getId()+"");
-                i.putExtra("name", recentlyViewedList.get(position).getName());
-                i.putExtra("image", recentlyViewedList.get(position).getImageUrl());
-                i.putExtra("price",recentlyViewedList.get(position).getPrice()+"");
-                i.putExtra("desc",recentlyViewedList.get(position).getDescription());
-                i.putExtra("unit",recentlyViewedList.get(position).getUnit());
-                i.putExtra("discount",recentlyViewedList.get(position).getDiscount());
+                Product product = recentlyViewedList.get(position);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("object_product",product);
+                i.putExtras(bundle);
                 context.startActivity(i);
             }
         });
@@ -97,7 +94,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
 
     public class RecentlyViewedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView name, description, price, quantity, unit;
+        TextView name, description, price, discount, unit;
         ImageView img;
         CardView layoutItemRV;
 
@@ -108,7 +105,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
             description = itemView.findViewById(R.id.tv_descriptionRV);
             unit = itemView.findViewById(R.id.tv_unitRV);
             price = itemView.findViewById(R.id.tv_priceRV);
-            quantity=itemView.findViewById(R.id.tv_quantityRV);
+            discount=itemView.findViewById(R.id.tv_discountRV);
             img = itemView.findViewById(R.id.imv_imgRV);
             layoutItemRV=itemView.findViewById(R.id.layout_itemRV);
             itemView.setOnClickListener(this);

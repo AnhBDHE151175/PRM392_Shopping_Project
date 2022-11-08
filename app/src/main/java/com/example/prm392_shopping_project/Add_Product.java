@@ -70,7 +70,6 @@ public class Add_Product extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
              id_cate= categoryDB.getIdbyName(listNameCategory.get(position));
-             Toast.makeText(Add_Product.this,""+id_cate,Toast.LENGTH_LONG).show();
             }
 
             @Override
