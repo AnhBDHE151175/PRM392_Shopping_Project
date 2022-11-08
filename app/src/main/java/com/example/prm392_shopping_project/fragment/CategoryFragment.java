@@ -87,7 +87,6 @@ public class CategoryFragment extends Fragment implements CategoryCRUDAdapter.Ca
         intent.putExtra("id", category.getId());
         intent.putExtra("name", category.getName());
         intent.putExtra("image", category.getImageUrl());
-
         startActivity(intent);
 
     }

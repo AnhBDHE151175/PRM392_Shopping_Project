@@ -11,9 +11,9 @@
         android:title="Category"/>
 
     <item
-        android:id="@+id/menuProfile"
+        android:id="@+id/menuTotalOrder"
         android:icon="@drawable/user"
-        android:title="Profile"/>
+        android:title="Total Order"/>
 
     <item
         android:id="@+id/menuContact"
@@ -31,7 +31,7 @@
             <item
                 android:id="@+id/menuSupport"
                 android:icon="@drawable/headphone"
-                android:title="Category"/>
+                android:title="Support"/>
 
             <item
                 android:id="@+id/menuAboutUs"

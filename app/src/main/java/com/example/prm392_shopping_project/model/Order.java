@@ -68,4 +68,12 @@ public class Order {
     public void setOrderDetails(List<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
+
+    @Override
+    public String toString() {
+        return
+                "customerId: " + customerId +
+                ", orderDate: " + orderDate +
+                ", totalBill: " + totalBill + "\n\n";
+    }
 }

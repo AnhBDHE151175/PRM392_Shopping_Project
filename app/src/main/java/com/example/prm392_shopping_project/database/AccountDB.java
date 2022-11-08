@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import com.example.prm392_shopping_project.model.Account;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountDB extends AppDatabaseContext implements IGenericDB<Account>{
@@ -72,7 +73,28 @@ public class AccountDB extends AppDatabaseContext implements IGenericDB<Account>
 
     @Override
     public List<Account> getAll() {
-        return null;
+        List<Account> list = new ArrayList<>();
+        String query = "SELECT * FROM Accounts";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+
+           String email =  cursor.getString(0);
+           int pass =  cursor.getInt(1);
+            Date c = new Date(cursor.getLong(2));
+            int isAdmin_temp = cursor.getInt(3);
+            boolean isAdmin;
+            if (isAdmin_temp == 0) {
+                isAdmin = false;
+            } else {
+                isAdmin = true;
+            }
+            Account account = new Account(email, pass, c, isAdmin);
+            list.add(account);
+        }
+        return list;
     }
 
     @Override
@@ -80,8 +102,13 @@ public class AccountDB extends AppDatabaseContext implements IGenericDB<Account>
         long millis = System.currentTimeMillis();
         Date today = new Date(millis);
         long count = 0;
-        Account a = new Account("01234", 1234, today, true);
+        Account a = new Account("0123", 1234, today, false);
+        Account b = new Account("012345", 1234, today, false);
+        Account c = new Account("01234", 1234, today, true);
         count = insert(a);
+        count = insert(b);
+        count = insert(c);
+
         return count;
     }
 

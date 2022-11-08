@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.prm392_shopping_project">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -23,6 +26,15 @@
             android:name=".AddCategory"
             android:exported="false" />
         <activity
+            android:name=".Update_Product"
+            android:exported="false" />
+        <activity
+            android:name=".Add_Product"
+            android:exported="false" />
+        <activity
+            android:name=".UDProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
@@ -30,10 +42,10 @@
             android:exported="false" />
         <activity
             android:name=".Admin"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name=".CartActivity"
             android:exported="false" />

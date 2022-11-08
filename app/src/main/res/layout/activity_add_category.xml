@@ -7,39 +7,78 @@
     android:layout_height="match_parent"
     tools:context=".AddCategory">
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="67dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Name Category"
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:text="Add Category"
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/edt_nameadd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="148dp"
         android:ems="10"
+        android:hint="Name category"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="116dp"
         android:text="Add"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgAddCate" />
+
+    <ImageView
+        android:id="@+id/imgAddCate"
+        android:layout_width="161dp"
+        android:layout_height="155dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/profile_picture"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nameadd"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="132dp"
+        android:text="upload"
+        app:layout_constraintStart_toEndOf="@+id/imgAddCate"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nameadd" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="116dp"
+        android:text="Cancel"
+        app:layout_constraintStart_toEndOf="@+id/btn_add"
+        app:layout_constraintTop_toBottomOf="@+id/imgAddCate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

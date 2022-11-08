@@ -15,6 +15,7 @@ import android.widget.ImageView;
 
 
 import com.example.prm392_shopping_project.adapter.AllCategoryAdapter;
+import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.model.Category;
 
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class AllCategory extends AppCompatActivity {
     RecyclerView AllCategoryRecycler;
     AllCategoryAdapter allCategoryAdapter;
     List<Category> allCategoryModelList;
+    CategoryDB db;
 
     ImageView back;
 
@@ -33,9 +35,9 @@ public class AllCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_category);
 
+        db = new CategoryDB(this);
         AllCategoryRecycler = findViewById(R.id.all_category);
         back = findViewById(R.id.back);
-
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +51,7 @@ public class AllCategory extends AppCompatActivity {
 
         // adding data to model
         allCategoryModelList = new ArrayList<>();
+        allCategoryModelList = db.getAll();
         /*allCategoryModelList.add(new AllCategoryModel(1, R.drawable.ic_fruits));
         allCategoryModelList.add(new AllCategoryModel(2, R.drawable.ic_veggies));
         allCategoryModelList.add(new AllCategoryModel(3, R.drawable.ic_meat));

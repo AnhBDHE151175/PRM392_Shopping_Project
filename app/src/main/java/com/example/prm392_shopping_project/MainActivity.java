@@ -1,10 +1,5 @@
 package com.example.prm392_shopping_project;
 
-import static com.example.prm392_shopping_project.R.drawable.ic_home_fish;
-import static com.example.prm392_shopping_project.R.drawable.ic_home_fruits;
-import static com.example.prm392_shopping_project.R.drawable.ic_home_meats;
-import static com.example.prm392_shopping_project.R.drawable.ic_home_veggies;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -25,6 +20,7 @@ import com.example.prm392_shopping_project.database.AccountDB;
 import com.example.prm392_shopping_project.database.AppDatabaseContext;
 import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.database.ProductDB;
+import com.example.prm392_shopping_project.model.Account;
 import com.example.prm392_shopping_project.model.Cart;
 import com.example.prm392_shopping_project.model.Category;
 import com.example.prm392_shopping_project.model.Product;
@@ -120,18 +116,18 @@ public class MainActivity extends AppCompatActivity {
             productDB.seedingData();
         }
 
-        accountDB.seedingData();
-
+        List<Account> listAccount = new ArrayList<>();
+        listAccount = accountDB.getAll();
+        if (listAccount.size() == 0) {
+            accountDB.seedingData();
+        }
         // adding data to model
         discountedProductsList = productDB.getAll();
 
         // adding data to model
-//        categoryList = categoryDB.getAll();
         categoryList = new ArrayList<Category>();
-        categoryList.add(new Category(1,"Fruits", String.valueOf(ic_home_fruits)));
-        categoryList.add(new Category(2,"Fish", String.valueOf(ic_home_fish)));
-        categoryList.add(new Category( 3,"Meats", String.valueOf(ic_home_meats)));
-        categoryList.add(new Category( 4,"Veggies", String.valueOf(ic_home_veggies)));
+        categoryList = categoryDB.getTop();
+
         // adding data to model
         recentlyViewedList = productDB.getAll();
 
@@ -162,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         recentlyViewedAdapter = new RecentlyViewedAdapter(this, recentlyViewedDataList);
         recentlyViewedRecycler.setAdapter(recentlyViewedAdapter);
     }
+
 
 
 }

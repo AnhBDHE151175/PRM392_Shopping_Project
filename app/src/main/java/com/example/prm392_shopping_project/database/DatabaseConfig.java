@@ -18,7 +18,7 @@ public class DatabaseConfig {
     public static final String Categories = "CREATE TABLE " + CATEGORY_TABLE + "(\n" +
             "   [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +
             "   [name] nvarchar(50) NOT NULL COLLATE NOCASE,\n" +
-            "   [imageUrl] nvarchar(150) COLLATE NOCASE\n" +
+            "   [imageUrl] BLOB\n" +
             ")";
     public static final String Customers = "CREATE TABLE " + CUSTOMER_TABLE + "(\n" +
             "   [id] integer PRIMARY KEY AUTOINCREMENT NOT NULL,\n" +

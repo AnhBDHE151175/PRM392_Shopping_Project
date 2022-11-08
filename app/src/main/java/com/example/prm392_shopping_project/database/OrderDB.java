@@ -1,6 +1,5 @@
 package com.example.prm392_shopping_project.database;
 
-import static com.example.prm392_shopping_project.database.DatabaseConfig.CUSTOMER_TABLE;
 import static com.example.prm392_shopping_project.database.DatabaseConfig.ORDER_TABLE;
 
 import android.content.ContentValues;
@@ -12,6 +11,8 @@ import androidx.annotation.Nullable;
 
 import com.example.prm392_shopping_project.model.Order;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderDB extends AppDatabaseContext implements IGenericDB<Order>{
@@ -64,7 +65,22 @@ public class OrderDB extends AppDatabaseContext implements IGenericDB<Order>{
 
     @Override
     public List<Order> getAll() {
-        return null;
+        List<Order> list = new ArrayList<>();
+        String query = "SELECT * FROM Orders";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            int id =  cursor.getInt(0);
+            long c1 = cursor.getLong(1);
+            Date c = new Date(cursor.getLong(1));
+            float total_bill = cursor.getFloat(2);
+            int cus_id = cursor.getInt(3);
+            Order order = new Order(id, cus_id, c, total_bill);
+            list.add(order);
+        }
+        return list;
     }
 
     @Override
