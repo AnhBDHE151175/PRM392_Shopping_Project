@@ -33,7 +33,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         ProductListener = productListener;
     }
 
-    public ProductAdapter.ProductListener getProductListener() {
+    public ProductListener getProductListener() {
         return ProductListener;
     }
     public Product getProductAt (int position) {

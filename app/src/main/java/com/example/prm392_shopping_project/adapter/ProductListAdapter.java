@@ -61,7 +61,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         return list.size();
     }
 
-    public  static class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView productImage;
         TextView name, desc, price, unit, discount;
@@ -81,7 +81,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         @Override
         public void onClick(View view) {
-
+            if (productListener != null) {
+                productListener.onItemClick(view, getAdapterPosition());
+            }
         }
     }
 

@@ -20,6 +20,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     Context context;
     List<Category> categoryList;
+    private CategoriesListener categoriesListener;
 
     public CategoryAdapter(Context context, List<Category> categoryList) {
         this.context = context;
@@ -43,6 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
         holder.categoryImage.setImageBitmap(bitmap);
 
+
     }
 
     @Override
@@ -50,7 +52,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return categoryList.size();
     }
 
-    public  static class CategoryViewHolder extends RecyclerView.ViewHolder{
+    public  class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView categoryImage;
 
@@ -58,8 +60,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             super(itemView);
 
             categoryImage = itemView.findViewById(R.id.categoryImage);
+            itemView.setOnClickListener(this);
 
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (categoriesListener != null) {
+                categoriesListener.onItemClick(view, getAdapterPosition());
+            }
         }
     }
 
+    private interface CategoriesListener {
+        void onItemClick(View view, int position);
+    }
 }

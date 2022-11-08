@@ -16,17 +16,20 @@ import android.widget.ImageView;
 
 
 import com.example.prm392_shopping_project.adapter.AllCategoryAdapter;
+import com.example.prm392_shopping_project.database.CategoryDB;
 import com.example.prm392_shopping_project.model.Category;
+import com.example.prm392_shopping_project.model.Product;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllCategory extends AppCompatActivity {
+public class AllCategory extends AppCompatActivity  {
 
     RecyclerView AllCategoryRecycler;
     AllCategoryAdapter allCategoryAdapter;
     List<Category> allCategoryModelList;
-
+    CategoryDB categoryDB;
     ImageView back;
 
     @Override
@@ -36,7 +39,7 @@ public class AllCategory extends AppCompatActivity {
 
         AllCategoryRecycler = findViewById(R.id.all_category);
         back = findViewById(R.id.back);
-
+        categoryDB= new CategoryDB(this);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +52,7 @@ public class AllCategory extends AppCompatActivity {
 
 
         // adding data to model
-        allCategoryModelList = new ArrayList<>();
+        allCategoryModelList = categoryDB.getAll();
         /*allCategoryModelList.add(new AllCategoryModel(1, R.drawable.ic_fruits));
         allCategoryModelList.add(new AllCategoryModel(2, R.drawable.ic_veggies));
         allCategoryModelList.add(new AllCategoryModel(3, R.drawable.ic_meat));
@@ -73,6 +76,17 @@ public class AllCategory extends AppCompatActivity {
         allCategoryAdapter = new AllCategoryAdapter(this,allcategoryModelList);
         AllCategoryRecycler.setAdapter(allCategoryAdapter);
     }
+
+//    @Override
+//    public void onItemClick(View view, int position) {
+//            Category category = allCategoryAdapter.getCategoryAt(position);
+//            Intent intent= new Intent(AllCategory.this, AllProductActivity.class);
+//            Bundle bundle=new Bundle();
+//            bundle.putSerializable("object_category", (Serializable) category);
+//            intent.putExtras(bundle);
+//            startActivity(intent);
+//    }
+
 
     // now we need some item decoration class for manage spacing
 

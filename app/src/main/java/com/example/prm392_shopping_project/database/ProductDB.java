@@ -173,4 +173,27 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         }
         return list;
     }
+    public List<Product> getByCateId(int id) {
+        List<Product> list = new ArrayList<>();
+        String query = "SELECT * FROM " + PRODUCT_TABLE + " where category_id = " + id;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            Product product = new Product(
+                    cursor.getInt(0),
+                    cursor.getString(1),
+                    cursor.getString(2),
+                    cursor.getInt(3),
+                    cursor.getInt(4),
+                    cursor.getString(5),
+                    cursor.getInt(6),
+                    cursor.getInt(7),
+                    cursor.getBlob(8),
+                    cursor.getBlob(9)
+            );
+            list.add(product);
+        }
+        return list;
+    }
 }

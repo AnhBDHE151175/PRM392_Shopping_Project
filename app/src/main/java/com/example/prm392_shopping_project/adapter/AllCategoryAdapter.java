@@ -1,8 +1,10 @@
 package com.example.prm392_shopping_project.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,21 +13,38 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.prm392_shopping_project.AllProductActivity;
+import com.example.prm392_shopping_project.ProductDetails;
 import com.example.prm392_shopping_project.R;
 import com.example.prm392_shopping_project.model.Category;
+import com.example.prm392_shopping_project.model.Product;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.AllCategoryViewHolder> {
 
     Context context;
     List<Category> categoryList;
+    private AllCategoriesListener allCategoriesListener;
+
 
     public AllCategoryAdapter(Context context, List<Category> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
     }
 
+    public AllCategoriesListener getAllCategoriesListener() {
+        return allCategoriesListener;
+    }
+
+    public void setAllCategoriesListener(AllCategoriesListener allCategoriesListener) {
+        this.allCategoriesListener = allCategoriesListener;
+    }
+
+    public Category getCategoryAt (int position) {
+        return categoryList.get(position);
+    }
     @NonNull
     @Override
     public AllCategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,6 +61,15 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
         byte[] Image = category.getImageUrl();
         Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
         holder.categoryImage.setImageBitmap(bitmap);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i=new Intent(context, AllProductActivity.class);
+                i.putExtra("id",category.getId());
+                context.startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -49,7 +77,7 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
         return categoryList.size();
     }
 
-    public  static class AllCategoryViewHolder extends RecyclerView.ViewHolder{
+    public class AllCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView categoryImage;
 
@@ -57,8 +85,18 @@ public class AllCategoryAdapter extends RecyclerView.Adapter<AllCategoryAdapter.
             super(itemView);
 
             categoryImage = itemView.findViewById(R.id.categoryImage);
+            itemView.setOnClickListener(this);
+        }
 
+        @Override
+        public void onClick(View view) {
+            if (allCategoriesListener != null) {
+                allCategoriesListener.onItemClick(view, getAdapterPosition());
+            }
         }
     }
 
+    public interface AllCategoriesListener {
+        void onItemClick(View view, int position);
+    }
 }
