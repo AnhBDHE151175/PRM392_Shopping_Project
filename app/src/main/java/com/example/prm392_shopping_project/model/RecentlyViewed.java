@@ -8,10 +8,10 @@ public class RecentlyViewed {
     int price;
     String quantity;
     String unit;
-    int imageUrl;
-    int bigImageUrl;
+    private byte[] imageUrl;
+    private byte[] bigImageUrl;
 
-    public RecentlyViewed(int id, String name, String description, int price, String quantity, String unit, int imageUrl, int bigimageurl) {
+    public RecentlyViewed(int id, String name, String description, int price, String quantity, String unit, byte[] imageUrl, byte[] bigimageurl) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -30,13 +30,7 @@ public class RecentlyViewed {
         this.id = id;
     }
 
-    public int getBigImageUrl() {
-        return bigImageUrl;
-    }
 
-    public void setBigImageUrl(int bigImageUrl) {
-        this.bigImageUrl = bigImageUrl;
-    }
 
     public String getName() {
         return name;
@@ -78,11 +72,19 @@ public class RecentlyViewed {
         this.unit = unit;
     }
 
-    public int getImageUrl() {
+    public byte[] getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(int imageUrl) {
+    public void setImageUrl(byte[] imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public byte[] getBigImageUrl() {
+        return bigImageUrl;
+    }
+
+    public void setBigImageUrl(byte[] bigImageUrl) {
+        this.bigImageUrl = bigImageUrl;
     }
 }

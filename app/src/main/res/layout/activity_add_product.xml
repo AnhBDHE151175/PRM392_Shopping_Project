@@ -83,32 +83,6 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_addquantity"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <ImageView
-        android:id="@+id/imv_addimg"
-        android:layout_width="140dp"
-        android:layout_height="91dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.332"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_category"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_addnewImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="57dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imv_addimg"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_category"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <Spinner
         android:id="@+id/spinner_category"
         android:layout_width="241dp"
@@ -133,13 +107,48 @@
         tools:ignore="TouchTargetSizeCheck" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_addProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="72dp"
         android:text="Add"
-        android:onClick="addProduct"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imv_addimg" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_addImg" />
+
+    <ImageView
+        android:id="@+id/imv_addImg"
+        android:layout_width="129dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/profile_picture"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_category"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btn_addImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="54dp"
+        android:text="upload"
+        app:layout_constraintStart_toEndOf="@+id/imv_addImg"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_category" />
+
+    <Button
+        android:id="@+id/btn_cancelAddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="101dp"
+        android:text="Cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_addProduct"
+        app:layout_constraintTop_toBottomOf="@+id/btn_addImg" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.example.prm392_shopping_project.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +37,9 @@ public class DiscountedProductAdapter extends RecyclerView.Adapter<DiscountedPro
 
     @Override
     public void onBindViewHolder(@NonNull DiscountedProductViewHolder holder, int position) {
-
-        holder.discountImageView.setImageResource(Integer.parseInt(discountedProductsList.get(position).getBigImageUrl()));
+        byte[] Image = discountedProductsList.get(position).getImageUrl();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
+        holder.discountImageView.setImageBitmap(bitmap);
 
     }
 

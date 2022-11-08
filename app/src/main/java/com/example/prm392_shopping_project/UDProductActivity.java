@@ -1,12 +1,20 @@
 package com.example.prm392_shopping_project;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,9 +23,12 @@ import com.example.prm392_shopping_project.database.ProductDB;
 import com.example.prm392_shopping_project.fragment.CategoryFragment;
 import com.example.prm392_shopping_project.model.Product;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+
 public class UDProductActivity extends AppCompatActivity {
     TextView tv_name, tv_description, tv_price, tv_unit, tv_quantity;
-    ImageView img;
+    ImageView imgView;
     ProductDB pdb;
 
     @Override
@@ -33,13 +44,16 @@ public class UDProductActivity extends AppCompatActivity {
         tv_price = findViewById(R.id.tv_pricePro);
         tv_unit = findViewById(R.id.tv_unitPro);
         tv_quantity = findViewById(R.id.tv_quantityPro);
-        img = findViewById(R.id.img_avatar);
+        imgView = findViewById(R.id.img_avatar);
+
         tv_name.setText(pro.getName());
         tv_description.setText(pro.getDescription());
         tv_price.setText(String.valueOf(pro.getPrice()));
         tv_unit.setText(pro.getUnit());
         tv_quantity.setText(String.valueOf(pro.getQuantity()));
-        img.setImageResource(Integer.parseInt(pro.getImageUrl()));
+//        byte[] img = (byte[]) pro.getImageUrl();
+//        Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+//        imgView.setImageBitmap(bitmap);
     }
 
     public void onUpdateProduct(View view) {
@@ -77,4 +91,5 @@ public class UDProductActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
+
 }

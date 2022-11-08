@@ -10,16 +10,16 @@ public class Product implements Serializable {
     private int quantity;
     private String unit;
     private int discount;
-    private String imageUrl;
-    private String bigImageUrl;
+    private byte[] imageUrl;
+    private byte[] bigImageUrl;
 
     private int categoryId;
     private Category category;
 
     public Product() {
     }
-    public Product(String name, String description, double price, int quantity, String unit,int categoryId, int discount, String
-            imageUrl, String bigImageUrl) {
+    public Product(String name, String description, double price, int quantity, String unit,int categoryId, int discount,
+                   byte[] imageUrl, byte[] bigImageUrl) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -31,8 +31,8 @@ public class Product implements Serializable {
         this.unit = unit;
     }
 
-    public Product(int id,String name, String description, double price, int quantity,String unit, int categoryId, int discount, String
-            imageUrl, String bigImageUrl) {
+    public Product(int id,String name, String description, double price, int quantity,String unit, int categoryId, int discount,
+                   byte[] imageUrl, byte[] bigImageUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -93,19 +93,19 @@ public class Product implements Serializable {
         this.discount = discount;
     }
 
-    public String getImageUrl() {
+    public byte[] getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(byte[] imageUrl) {
         this.imageUrl = imageUrl;
     }
 
-    public String getBigImageUrl() {
+    public byte[] getBigImageUrl() {
         return bigImageUrl;
     }
 
-    public void setBigImageUrl(String bigImageUrl) {
+    public void setBigImageUrl(byte[] bigImageUrl) {
         this.bigImageUrl = bigImageUrl;
     }
 

@@ -46,8 +46,8 @@ public class DatabaseConfig {
             "   [unit] nvarchar(50) NOT NULL,\n" +
             "   [category_id] int NOT NULL,\n" +
             "   [discount] int,\n" +
-            "   [imageUrl] nvarchar(50) NOT NULL COLLATE NOCASE,\n" +
-            "   [bigImageUrl] nvarchar(50) NOT NULL COLLATE NOCASE,\n" +
+            "   [imageUrl] BLOB NOT NULL COLLATE NOCASE,\n" +
+            "   [bigImageUrl] BLOB COLLATE NOCASE,\n" +
             "   CONSTRAINT [FK_Products_Categories] FOREIGN KEY ([category_id])\n" +
             "      REFERENCES [Categories]([id]) ON DELETE NO ACTION ON UPDATE NO ACTION\n" +
             ")";

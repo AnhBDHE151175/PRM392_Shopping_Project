@@ -1,12 +1,16 @@
 package com.example.prm392_shopping_project.adapter;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,11 +23,33 @@ import java.util.List;
 public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAdapter.RecentlyViewedViewHolder>{
     Context context;
     List<Product> recentlyViewedList;
+    private RecentlyViewedListener RecentlyViewedListener;
 
     public RecentlyViewedAdapter(Context context, List<Product> recentlyViewedList) {
         this.context = context;
         this.recentlyViewedList = recentlyViewedList;
     }
+    public void setList(List<Product> list) {
+        this.recentlyViewedList= list;
+        notifyDataSetChanged(); // refesh
+    }
+
+    public RecentlyViewedAdapter(RecentlyViewedAdapter.RecentlyViewedListener recentlyViewedListener) {
+        RecentlyViewedListener = recentlyViewedListener;
+    }
+
+    public RecentlyViewedAdapter.RecentlyViewedListener getRecentlyViewedListener() {
+        return RecentlyViewedListener;
+    }
+
+    public void setRecentlyViewedListener(RecentlyViewedAdapter.RecentlyViewedListener recentlyViewedListener) {
+        RecentlyViewedListener = recentlyViewedListener;
+    }
+
+    public Product getrecentlyViewedAt (int position) {
+        return recentlyViewedList.get(position);
+    }
+
 
     @NonNull
     @Override
@@ -34,15 +60,17 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecentlyViewedViewHolder holder,int position) {
 
         Product product = recentlyViewedList.get(position);
         holder.name.setText(product.getName());
         holder.description.setText(product.getDescription());
         holder.price.setText(product.getPrice() + "$/");
         holder.unit.setText(product.getUnit());
-        holder.discount.setText(String.valueOf(product.getDiscount()));
-        holder.bg.setBackgroundResource(Integer.parseInt(recentlyViewedList.get(position).getImageUrl()));
+        holder.quantity.setText(String.valueOf(product.getQuantity()));
+        byte[] Image = product.getImageUrl();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(Image, 0, Image.length);
+        holder.img.setImageBitmap(bitmap);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +79,7 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
                 Intent i=new Intent(context, ProductDetails.class);
                 i.putExtra("id", recentlyViewedList.get(position).getId()+"");
                 i.putExtra("name", recentlyViewedList.get(position).getName());
-                i.putExtra("image", recentlyViewedList.get(position).getBigImageUrl());
+                i.putExtra("image", recentlyViewedList.get(position).getImageUrl());
                 i.putExtra("price",recentlyViewedList.get(position).getPrice()+"");
                 i.putExtra("desc",recentlyViewedList.get(position).getDescription());
                 i.putExtra("unit",recentlyViewedList.get(position).getUnit());
@@ -67,21 +95,34 @@ public class RecentlyViewedAdapter extends RecyclerView.Adapter<RecentlyViewedAd
         return recentlyViewedList.size();
     }
 
-    public static class RecentlyViewedViewHolder extends RecyclerView.ViewHolder{
+    public class RecentlyViewedViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        TextView name, description, price, discount, unit;
-        ConstraintLayout bg;
+        TextView name, description, price, quantity, unit;
+        ImageView img;
+        CardView layoutItemRV;
 
         public RecentlyViewedViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            name = itemView.findViewById(R.id.product_name);
-            description = itemView.findViewById(R.id.description);
-            unit = itemView.findViewById(R.id.unit);
-            price = itemView.findViewById(R.id.price);
-            discount = itemView.findViewById(R.id.discount);
-            bg = itemView.findViewById(R.id.recently_layout);
-
+            name = itemView.findViewById(R.id.tv_nameRV);
+            description = itemView.findViewById(R.id.tv_descriptionRV);
+            unit = itemView.findViewById(R.id.tv_unitRV);
+            price = itemView.findViewById(R.id.tv_priceRV);
+            quantity=itemView.findViewById(R.id.tv_quantityRV);
+            img = itemView.findViewById(R.id.imv_imgRV);
+            layoutItemRV=itemView.findViewById(R.id.layout_itemRV);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            if (RecentlyViewedListener != null) {
+                RecentlyViewedListener.onItemClick(view, getAdapterPosition());
+            }
+        }
+    }
+    public interface RecentlyViewedListener {
+        void onItemClick(View view, int position);
+
     }
 }

@@ -29,7 +29,7 @@ public class ProductDetails extends AppCompatActivity {
 
         id = i.getStringExtra("id");
         name = i.getStringExtra("name");
-        image = i.getIntExtra("image", R.drawable.b1);
+        image = i.getIntExtra("image", R.drawable.b2);
         price = i.getStringExtra("price");
         desc = i.getStringExtra("desc");
         qty = i.getStringExtra("qty");
