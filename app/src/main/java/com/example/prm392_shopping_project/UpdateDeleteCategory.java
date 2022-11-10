@@ -80,8 +80,7 @@ public class UpdateDeleteCategory extends AppCompatActivity {
                 String name = edt_name.getText().toString();
                 Category category = new Category(id, name, imageViewToByte(imgView));
                 db.update(category);
-                Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
-                startActivity(intent);
+
             }
         });
 
@@ -98,8 +97,7 @@ public class UpdateDeleteCategory extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             db.delete(id);
-                            Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
-                            startActivity(intent);
+
                         }
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

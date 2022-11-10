@@ -78,8 +78,8 @@
 
     <TextView
         android:id="@+id/prodDesc"
-        android:layout_width="356dp"
-        android:layout_height="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_light"
         android:text="prodDesc"
@@ -110,13 +110,14 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_buy"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prodPrice"
+        app:layout_constraintTop_toBottomOf="@+id/textView15"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/cartbutton" />
 
@@ -135,21 +136,21 @@
         android:id="@+id/qty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/open_sans_light"
         android:text="TextView"
         android:textSize="18sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textView15"
-        app:layout_constraintTop_toBottomOf="@+id/unit" />
+        app:layout_constraintTop_toBottomOf="@+id/prodDesc" />
 
     <TextView
         android:id="@+id/unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_light"
         android:text="TextView"
         android:textSize="24sp"
@@ -171,11 +172,11 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
-        android:text="Số lượng :"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="20dp"
+        android:text="Số lượng: "
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prodPrice" />
+        app:layout_constraintStart_toEndOf="@+id/unit"
+        app:layout_constraintTop_toBottomOf="@+id/prodDesc" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

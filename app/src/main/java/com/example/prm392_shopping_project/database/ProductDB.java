@@ -72,7 +72,7 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
     @Override
     public Product getById(int id) {
         SQLiteDatabase db = super.getReadableDatabase();
-        String query = "SELECT * FROM " + databaseConfig.PRODUCT_TABLE + " WHERE id = " + id;
+        String query = "SELECT * FROM " + databaseConfig.PRODUCT_TABLE + " WHERE category_id = " + id;
 
         Cursor cursor = db.rawQuery(query, null);
         if (cursor.moveToFirst()) {
@@ -104,6 +104,29 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         String query = "SELECT * FROM " + PRODUCT_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
+
+        while (cursor.moveToNext()) {
+            int id= cursor.getInt(0);
+            String name= cursor.getString(1);
+            String description= cursor.getString(2);
+            float price= cursor.getFloat(3);
+            int quantity= cursor.getInt(4);
+            String unit= cursor.getString(5);
+            int category_id= cursor.getInt(6);
+            int discount=cursor.getInt(7);
+            byte[] img= cursor.getBlob(8);
+//            byte[] imgBig= cursor.getBlob(9);
+
+            Product product = new Product(id,name,description,price,quantity,unit,category_id,discount,img,img);
+            list.add(product);
+        }
+        return list;
+    }
+
+    public List<Product> getDiscountProduct(){
+        List<Product> list = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(PRODUCT_TABLE, null, null , null, null, null, "discount desc");
 
         while (cursor.moveToNext()) {
             int id= cursor.getInt(0);

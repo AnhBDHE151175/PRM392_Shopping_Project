@@ -73,8 +73,7 @@ public class AddCategory extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), CategoryFragment.class);
-                startActivity(intent);
+
             }
         });
     }

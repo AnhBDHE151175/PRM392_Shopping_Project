@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             accountDB.seedingData();
         }
         // adding data to model
-        discountedProductsList = productDB.getAll();
+        discountedProductsList = productDB.getDiscountProduct();
 
         // adding data to model
         categoryList = new ArrayList<Category>();
