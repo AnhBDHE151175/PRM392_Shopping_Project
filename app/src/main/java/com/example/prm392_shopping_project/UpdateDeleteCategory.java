@@ -88,7 +88,7 @@ public class UpdateDeleteCategory extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int id = Integer.parseInt(tv_id.getText().toString());
-                if (pdb.getByCateId(id) == null) {
+                if (pdb.getProductByCategoryId(id) == null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                     builder.setTitle("Notification");
                     builder.setMessage("Are you sure remove this category?");

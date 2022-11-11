@@ -219,4 +219,32 @@ public class ProductDB extends AppDatabaseContext implements IGenericDB<Product>
         }
         return list;
     }
+
+    public Product getProductByCategoryId(int id) {
+        SQLiteDatabase db = super.getReadableDatabase();
+        String query = "SELECT * FROM " + databaseConfig.PRODUCT_TABLE + " WHERE category_id = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            try {
+                Product product = new Product(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getInt(3),
+                        cursor.getInt(4),
+                        cursor.getString(5),
+                        cursor.getInt(6),
+                        cursor.getInt(7),
+                        cursor.getBlob(8),
+                        cursor.getBlob(9));
+                return product;
+            }
+            catch (Exception ex){
+                throw new RuntimeException();
+            }
+        }
+        db.close();
+        return null;
+    }
 }

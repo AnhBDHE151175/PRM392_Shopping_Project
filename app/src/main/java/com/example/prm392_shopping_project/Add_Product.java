@@ -87,8 +87,8 @@ public class Add_Product extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Add_Product.this, ProductFragment.class);
-                startActivity(intent);
+//                Intent intent = new Intent(Add_Product.this, ProductFragment.class);
+//                startActivity(intent);
             }
         });
         btn_add.setOnClickListener(new View.OnClickListener() {
